@@ -1,0 +1,28 @@
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+<div class="idx_banner"><img width="100%" src="~/images/idx_pic.jpg"><div class="clear"></div></div>
+<div class="weui_cells weui_cells_access" style="margin-top:0;">
+
+    <a class="weui_cell" href="http://j.map.baidu.com/1bz9H">
+        <div class="weui_cell_hd"><img src="~/images/dot_idx1.png" alt="" width="60"></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>南沙区凤凰大道府前花园A9-106号 Store Location</p>
+        </div>
+        <div class="weui_cell_ft" style="font-size:28px; color:#3f4246"></div>
+    </a>
+
+    <a class="weui_cell" href="@Url.Action("Index","Appoint")">
+        <div class="weui_cell_hd"><img src="~/images/dot_idx3.png" alt="" width="60"></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>预定护理 Reserve A Treatment</p>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a>
+
+    <a class="weui_cell" href="@Url.Action("MyAppoint","Appoint")">
+        <div class="weui_cell_hd"><img src="~/images/dot_idx4.png" alt="" width="60"></div>
+        <div class="weui_cell_bd weui_cell_primary">
+            <p>我的预定 My Reservation</p>
+        </div>
+        <div class="weui_cell_ft"></div>
+    </a>
+</div>

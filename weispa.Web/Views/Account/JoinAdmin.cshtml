@@ -1,0 +1,51 @@
+﻿@{Layout = "~/Views/Shared/_Layout.cshtml";}
+<div class="order_t">- 注册管理员 -</div>
+<div class="book_b2" id="form">
+    <div class="room_massage">
+        <div class="room_massage_l">
+            <img src="~/images/dot_room2.gif">
+            <span class="verticalAlign"></span>
+        </div>
+        <div class="room_massage_r">
+            <span>CODE</span>
+            <label>邀请码</label>
+        </div>
+        <div class="room_massage_r3">
+            <input prop-name="code" type="text" placeholder="请输入邀请码">
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="book_btn">
+        <input id="submitBtn" type="button" value="注册">
+    </div>
+</div>
+@section FooterScript{
+    <script src="~/js/plugin/tool.js"></script>
+    <script type="text/javascript">
+        var lockobj = {};
+        var $form = $('#form');
+        $('#submitBtn').click(function () {
+            var p = tool.getParams($form);
+            if (p == null) {
+                return false;
+            }
+        tool.request({
+            url: '/Account/JoinAdminPost',
+            data: { code: p.code },
+            dataType: 'json',
+            type: "POST",
+            success: function(d) {
+                if (d.success) {
+                    location.href = '/Account/JoinSuccess';
+                } else
+                    tool.toptip(d.msg,2);
+            },
+            error: function(e, d) {
+                tool.toptip('操作失败');
+            },
+            loading: true
+
+        }, lockobj);
+        });
+    </script>
+}

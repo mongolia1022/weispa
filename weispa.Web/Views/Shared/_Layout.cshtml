@@ -1,0 +1,32 @@
+﻿@using com.weispa.Web.ViewModels
+@model com.weispa.Web.ViewModels.BaseVm
+@{
+    var vm = Model ?? new BaseVm();
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>微悦SPA</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <link rel="stylesheet" type="text/css" href="~/iconfont/iconfont.css" />
+    <link rel="stylesheet" href="~/css/css.css">
+    <link rel="stylesheet" href="~/lib/weui.min.css">
+    <link rel="stylesheet" href="~/css/jquery-weui.css">
+    @RenderSection("HeadStyle", false)
+</head>
+<body ontouchstar @Html.Raw(vm.BodyStyle)>
+    @RenderBody()
+    <script src="~/lib/jquery-2.1.4.js"></script>
+    <script src="~/lib/fastclick.js"></script>
+    <script>
+        $(function () {
+            FastClick.attach(document.body);
+        });
+    </script>
+    <script src="~/js/jquery-weui.js"></script>
+    @RenderSection("FooterScript", false)
+</body>
+</html>

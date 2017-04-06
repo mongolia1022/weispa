@@ -1,0 +1,87 @@
+﻿@using com.ccfw.Utility
+@using com.weispa.Web
+@using com.weispa.Web.Models
+@model com.weispa.Web.ViewModels.AppointFormVm
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        Model.BodyStyle = "bgcolor='#efeff4'";
+    }
+    <div class="order_t"><span class="iconfont"><a href="/"></a></span>- 预定确认 -</div>
+    <div class="book_banner">
+        <img src="~/images/banner.jpg" width="100%">
+        <div class="clear"></div>
+    </div>
+    <div class="book_banner_b">
+        <div class="book_banner_b_room_pic circle"></div>
+        <div class="book_banner_b_room_name">@((RoomType) Model.Room)</div>
+    </div>
+    <div class="book_b2" id="form">
+        <div class="room_date">
+            <ul>
+                <li>
+                    <span>DATE</span>
+                    <label>@Model.Start.ToString("yyyy-MM-dd")</label>
+                </li>
+                <li>
+                    <span>TIME</span>
+                    <label>@Model.Start.ToString("HH:mm")-@Model.End.ToString("HH:mm")</label>
+                    <input type="hidden" prop-name="Start" value="@Model.Start.ToString("yyyy-MM-dd HH:mm")" />
+                    <input type="hidden" prop-name="End" value="@Model.Start.ToString("yyyy-MM-dd HH:mm")"/>
+                    <input type="hidden" prop-name="Room" value="@Model.Room" /> 
+                </li>
+                <li>
+                    <span>WEEK</span>
+                    <label>@Model.Start.ToWeekDayStr("星期")</label>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="room_massage">
+            <div class="room_massage_l">
+                <img src="~/images/dot_room1.gif">
+                <span class="verticalAlign"></span>
+            </div>
+            <div class="room_massage_r">
+                <span>NAME</span>
+                <label>预定姓名</label>
+            </div>
+            <div class="room_massage_r3">
+                <input prop-name="CustomName" empty="请输入预定姓名" max-length="20" type="text" placeholder="请输入预定姓名">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="room_massage">
+            <div class="room_massage_l">
+                <img src="~/images/dot_room2.gif">
+                <span class="verticalAlign"></span>
+            </div>
+            <div class="room_massage_r">
+                <span>PHONE</span>
+                <label>预定电话</label>
+            </div>
+            <div class="room_massage_r3">
+                <input prop-name="CustomPhone" type="text" placeholder="请输入预定电话" reg-exp="^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$|(^(13[0-9]|15[0|3|6|7|8|9]|18[8|9])\d{8}$)" reg-msg='请输入有效的电话号码'>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="room_massage">
+            <div class="room_massage_l">
+                <img src="~/images/dot_room3.gif">
+                <span class="verticalAlign"></span>
+            </div>
+            <div class="room_massage_r">
+                <span>REMARK</span>
+                <label>填写备注</label>
+            </div>
+            <div class="room_massage_r3">
+                <input prop-name="Remark" type="text" placeholder="请输入预定备注" max-length="30">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="book_btn"><input id="submitBtn" type="button" value="提交预约"></div>
+    </div>
+    @section FooterScript{
+        <script src="~/js/plugin/tool.js"></script>
+        <script src="~/js/weispa/appointForm.js"></script>
+    }
+

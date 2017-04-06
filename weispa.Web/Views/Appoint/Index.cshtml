@@ -1,0 +1,107 @@
+﻿@using com.ccfw.Utility
+@using com.weispa.Web
+@using com.weispa.Web.Models
+@model com.weispa.Web.ViewModels.AppointVm
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.BodyStyle = "style=\"background:#efeff4;\"";
+    var role = (MemberRole)Model.MemberInfo.Role;
+}
+<div class="order_t"><span class="iconfont"><a href="/"></a></span>- 预定护理 -</div>
+<div class="order_week">
+    <ul>
+        @{
+            var i = 0;
+            foreach (var item in Model.DateList)
+            {
+                i++;
+                <li @Html.Raw(i == Model.DateList.Count ? "style='border: none;'" : "")>
+                    <a @Html.Raw(item.Date == Model.SelectDate ? "class='now'" : "") href="@Url.Action("Index", new {time = item.Date.ToString("yyyy-MM-dd")})">
+                        @item.ToDayStr()<br /><span>@item.ToWeekDayStr()</span>
+                    </a>
+                </li>
+            }
+        }
+        <div class="clear"></div>
+    </ul>
+</div>
+<div class="order_table">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" id="appointList">
+        <tr>
+            <td align="center" valign="middle" class="order_table_t"><span>APPOINTMENT TIME</span><br>预定时间</td>
+            <td align="center" valign="middle" class="order_table_t"><span>ROSE SUITE</span><br>玫瑰</td>
+            <td align="center" valign="middle" class="order_table_t"><span>LAVENDER SUITE</span><br>薰衣草</td>
+        </tr>
+        @foreach (var item in Model.AppointList)
+        {
+            <tr>
+                <td align="center" valign="middle" class="tb_book">@item.StartTime.ToHHmm()-@item.EndTime.ToHHmm()</td>
+                @foreach (var room in item.Rooms)
+                {
+                    var start = item.StartTime.ToString("yyyy-MM-dd HH:mm");
+                    var end = item.EndTime.ToString("yyyy-MM-dd HH:mm");
+                    var color = "";
+                    switch (room.Status)
+                    {
+                        case 0:
+                            color = "green";
+                            break;
+                        case 1: color = "pink";
+                            break;
+                        case 2: color = "gray";
+                            break;
+                    }
+                    <td class="tb_book" align="center" valign="middle">
+                        @if (role == MemberRole.管理员)
+                        {
+                            <a href="javascript:;">
+                                <img src="~/images/fw_@(color).png">
+                                <input type="hidden" class="optStatus" value="@StringHelper.GetArrayStr(room.ToStatusList)" />
+                                <input type="hidden" class="start" value="@start" prop-name="Start" />
+                                <input type="hidden" class="end" value="@end" prop-name="End" />
+                                <input type="hidden" class="room" value="@room.Type" prop-name="Room" />
+                                <input type="hidden" class="orderId" value="@room.OrderId"/>
+                            </a>
+                        }
+                        else
+                        {
+                            if (room.Status == 0)
+                            {
+                                <a href="@Url.Action("AppointForm", new {start = start, end = end, room = room.Type})">
+                                    <img src="/images/fw_@(color).png"/>
+                                </a>
+                            }
+                            else
+                            {
+                                <img src="/images/fw_@(color).png" />
+                            }
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>
+<div class="order_b"><img src="~/images/order_b1.png" /><img src="~/images/order_b2.png" /><img src="~/images/order_b3.png" /></div>
+@section FooterScript
+{
+    <script type="text/javascript">
+        $(function () {
+            var tb_book_all_h = $(window).outerHeight();
+            var order_t_h = $('.order_t').outerHeight();
+            var order_week_h = $('.order_week').outerHeight();
+            var order_table_t_h = $('.order_table_t').outerHeight();
+            var order_t_h = $('.order_t').outerHeight();
+            var order_b_h = $('.order_b').outerHeight();
+            var tb_book_h = tb_book_all_h - order_t_h - order_week_h - order_table_t_h - order_b_h - 10;
+            var tb_book_h_e = tb_book_h / 7;
+            $('.tb_book').css('height', tb_book_h_e)
+
+        });
+</script>
+    @if (role == MemberRole.管理员)
+    {
+        <script type="text/javascript" src="~/js/plugin/tool.js"></script>
+        <script type="text/javascript" src="~/js/weispa/appointindex.js"></script>
+    }
+}

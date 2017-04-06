@@ -1,0 +1,104 @@
+﻿@using com.ccfw.Utility
+@using com.weispa.Web
+@using com.weispa.Web.Models
+@model com.weispa.Web.ViewModels.MyAppointVm
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Model.BodyStyle = "bgcolor='#efeff4'";
+}
+<div class="order_t">
+	- 预定信息 -
+    <label class="iconfont"><a href="#">&#xe65c;</a></label>
+</div>
+<div class="book_t">
+    <ul>
+        <li><a @Html.Raw(Model.Type==0?"class=\"now\"":"") href="@Url.Action("MyAppoint", new { Type = 0 })">当前预约</a></li>
+        <li><a @Html.Raw(Model.Type == 1 ? "class=\"now\"" : "") href="@Url.Action("MyAppoint", new { Type = 1 })">历史预约</a></li>
+    </ul>
+</div>
+@foreach (var myOrderVm in Model.MyOrders)
+{
+    var order = myOrderVm.Order;
+    var start = order.StartTime.ToDateTime();
+    var end=order.EndTime.ToDateTime();
+    <div class="book_b" orderId="@order.OId">
+        <input type="hidden" class="optStatus" value="@StringHelper.GetArrayStr(myOrderVm.ToStatusList)"/>
+        <div class="room">
+            <div class="room_l"><img src="~/images/fw_pink.png">
+            </div>
+            <div class="room_m">
+                <span>SUITE</span>
+                <label>@((RoomType) order.Room)</label>
+            </div>
+            <div class="room_r">@((OrderStatus) order.Status)</div>
+            <div class="clear"></div>
+        </div>
+        <div class="room_date">
+            <ul>
+                <li>
+                    <span>DATE</span>
+                    <label>@start.ToString("yyyy-MM-dd")</label>
+                </li>
+                <li>
+                    <span>TIME</span>
+                    <label>@start.ToString("HH:mm")-@end.ToString("HH:mm")</label>
+                </li>
+                <li>
+                    <span>WEEK</span>
+                    <label>@start.ToWeekDayStr("星期")</label>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div class="room_massage">
+            <div class="room_massage_l">
+                <img src="~/images/dot_room1.gif">
+                <span class="verticalAlign"></span>
+            </div>
+            <div class="room_massage_r">
+                <span>NAME</span>
+                <label>预定姓名</label>
+            </div>
+            <div class="room_massage_r">
+                <span>&nbsp;</span>
+                <label class="cl999">@(order.CustomName)</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="room_massage">
+            <div class="room_massage_l">
+                <img src="~/images/dot_room2.gif">
+                <span class="verticalAlign"></span>
+            </div>
+            <div class="room_massage_r">
+                <span>PHONE</span>
+                <label>预定电话</label>
+            </div>
+            <div class="room_massage_r">
+                <span>&nbsp;</span>
+                <label class="cl999">@(order.CustomPhone)</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="room_massage">
+            <div class="room_massage_l">
+                <img src="~/images/dot_room3.gif">
+                <span class="verticalAlign"></span>
+            </div>
+            <div class="room_massage_r">
+                <span>REMARK</span>
+                <label>填写备注</label>
+            </div>
+            <div class="room_massage_r2">
+                <span>&nbsp;</span>
+                <label >@(order.Remark)</label>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="room_finish">订单生成时间:@(order.CreateOn.ToDateTime().ToString("yyyy-MM-dd HH:mm:ss"))</div>
+    </div>
+}
+@section FooterScript{
+    <script src="~/js/plugin/tool.js"></script>
+    <script src="~/js/weispa/myappoint.js"></script>
+}

@@ -1,0 +1,16 @@
+﻿@model com.weispa.Web.ViewModels.InvitationCodeCreateSuccessVm
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="weui_msg">
+    <div class="weui_icon_area"><i class="weui_icon_success weui_icon_msg"></i></div>
+    <div class="weui_text_area">
+        <h2 class="weui_msg_title">邀请码为：@Model.Code</h2>
+        <p class="weui_msg_desc">请将这个邀请码告知将要邀请的管理员</p>
+    </div>
+    <div class="weui_opr_area">
+        <p class="weui_btn_area">
+            <a href="@Url.Action("MyAppoint","Appoint")" class="weui_btn weui_btn_primary">返回预定列表</a>
+        </p>
+    </div>
+</div>

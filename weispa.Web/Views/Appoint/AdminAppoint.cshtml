@@ -1,0 +1,191 @@
+﻿@using com.ccfw.Utility
+@using com.weispa.Web.Models
+@using Newtonsoft.Json
+@model com.weispa.Web.ViewModels.AdminAppointVm
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var rq = Model.Rq;
+}
+@section HeadStyle{
+    <link rel="stylesheet" href="~/css/demos.css">
+}
+<div class="weui_tab">
+    <div class="weui_tab_bd" id="contentWrap">
+        @*内容-start*@
+        <div class="weui_panel weui_panel_access">
+            <div class="weui_panel_hd">
+                @if (Model.Rq.Start.HasValue)
+                {
+                    @Model.Rq.Start.Value.ToString("yyyy/MM/dd")@:-
+                }
+                @if (Model.Rq.End.HasValue)
+                {
+                    @Model.Rq.End.Value.ToString("yyyy/MM/dd")
+                }
+                @if (Model.Rq.RoomType.HasValue)
+                {
+                    @:&lt;@Model.Rq.RoomType.Value
+                }
+            </div>
+            @{ Html.RenderPartial("_AdminAppointListPartial", Model.Orders);}
+        </div>
+        <div class="weui-infinite-scroll" pagecount="@(Model.TotalCount/10 + (Model.TotalCount%10 == 0 ? 0 : 1))" id="loader" style="display: none;">
+            <div class="infinite-preloader"></div>
+            正在加载
+        </div>
+        @*内容-end*@
+
+        @*筛选表单--start*@
+        <div id="searchForm" class='weui-popup-container popup-bottom'>
+            <div class="weui-popup-overlay"></div>
+            <div class="weui-popup-modal">
+                <form action="" method="get">
+                    <h2 class="demos-second-title">预定筛选</h2>
+                    <div class="weui_cells weui_cells_form">
+                        <div class="weui_cell">
+                            <div class="weui_cell_hd">
+                                <label for="" class="weui_label">开始时间</label>
+                            </div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <input class="weui_input" type="date" value="@Model.Rq.Start.Value.ToString("yyyy-MM-dd")" name="Start" prop-name="Start">
+                            </div>
+                        </div>
+                        <div class="weui_cell">
+                            <div class="weui_cell_hd">
+                                <label for="" class="weui_label">结束时间</label>
+                            </div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <input class="weui_input" type="date" value="@Model.Rq.End.Value.ToString("yyyy-MM-dd")" name="End" prop-name="End">
+                            </div>
+                        </div>
+                        <div class="weui_cell weui_cell_select">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <select class="weui_select" name="RoomType" prop-name="RoomType">
+                                    <option @Html.Raw(!Model.Rq.RoomType.HasValue ? "selected=\"true\"" : "") value="">--选择房间--</option>
+                                    <option @Html.Raw(Model.Rq.RoomType.HasValue && Model.Rq.RoomType.Value == RoomType.玫瑰 ? "selected=\"true\"" : "") value="0">玫瑰</option>
+                                    <option @Html.Raw(Model.Rq.RoomType.HasValue && Model.Rq.RoomType.Value == RoomType.薰衣草 ? "selected=\"true\"" : "") value="1">薰衣草</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="weui_cell weui_cell_select">
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <select class="weui_select" name="Status" prop-name="Status">
+                                    <option @Html.Raw(!Model.Rq.Status.HasValue ? "selected=\"true\"" : "") value="">--选择预定状态--</option>
+                                    <option @Html.Raw(Model.Rq.Status.HasValue && Model.Rq.Status.Value == OrderStatus.未确认 ? "selected=\"true\"" : "") value="0">未确认</option>
+                                    <option @Html.Raw(Model.Rq.Status.HasValue && Model.Rq.Status.Value == OrderStatus.已确认 ? "selected=\"true\"" : "") value="1">已确认</option>
+                                    <option @Html.Raw(Model.Rq.Status.HasValue && Model.Rq.Status.Value == OrderStatus.已完成 ? "selected=\"true\"" : "") value="2">已完成</option>
+                                    <option @Html.Raw(Model.Rq.Status.HasValue && Model.Rq.Status.Value == OrderStatus.未完成 ? "selected=\"true\"" : "") value="3">未完成</option>
+                                    <option @Html.Raw(Model.Rq.Status.HasValue && Model.Rq.Status.Value == OrderStatus.已取消 ? "selected=\"true\"" : "") value="4">已取消</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="weui_cell">
+                            <div class="weui_cell_hd">
+                                <label class="weui_label">姓名</label>
+                            </div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <input class="weui_input" type="tel" placeholder="请输入姓名" name="Name" prop-name="Name" value="@Model.Rq.Name">
+                            </div>
+                        </div>
+                        <div class="weui_cell">
+                            <div class="weui_cell_hd">
+                                <label class="weui_label">联系电话</label>
+                            </div>
+                            <div class="weui_cell_bd weui_cell_primary">
+                                <input class="weui_input" type="tel" placeholder="请输入手机号" name="Phone" prop-name="Phone" value="@Model.Rq.Phone">
+                            </div>
+                        </div>
+                        <div class="weui_btn_area">
+                            <input type="submit" class="weui_btn weui_btn_primary" value="确定" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        @*筛选表单--end*@
+    </div>
+
+    @*底部筛选--start*@
+    <div class="weui_tabbar" id="bottomTab">
+        <a @GetStatusUrl(-1) class="weui_tabbar_item weui_bar_item_on" status="">
+            <div class="weui_tabbar_icon weui_icon_circle">
+            </div>
+            <p class="weui_tabbar_label">全部</p>
+        </a>
+        <a @GetStatusUrl(0) class="weui_tabbar_item" status="@((int) OrderStatus.未确认)">
+            <div class="weui_tabbar_icon weui_icon_warn">
+            </div>
+            <p class="weui_tabbar_label">未确认</p>
+        </a>
+        <a @GetStatusUrl(1) class="weui_tabbar_item" status="@((int) OrderStatus.已确认)">
+            <div class="weui_tabbar_icon weui_icon_success_circle">
+            </div>
+            <p class="weui_tabbar_label">已确认</p>
+        </a>
+        <a @Html.Raw(GetStatusUrl(2))  class="weui_tabbar_item" status="@((int) OrderStatus.已完成)">
+            <div class="weui_tabbar_icon weui_icon_waiting">
+            </div>
+            <p class="weui_tabbar_label">已完成</p>
+        </a>
+        <a @GetStatusUrl(3) class="weui_tabbar_item" status="@((int) OrderStatus.未完成)">
+            <div class="weui_tabbar_icon weui_icon_info">
+            </div>
+            <p class="weui_tabbar_label">未完成</p>
+        </a>
+        <a @GetStatusUrl(4) class="weui_tabbar_item" status="@((int) OrderStatus.已取消)">
+            <div class="weui_tabbar_icon weui_icon_cancel">
+            </div>
+            <p class="weui_tabbar_label">已取消</p>
+        </a>
+        <a @GetStatusUrl(5) class="weui_tabbar_item" status="@((int) OrderStatus.已锁定)">
+            <div class="weui_tabbar_icon weui_icon_cancel">
+            </div>
+            <p class="weui_tabbar_label">已锁定</p>
+        </a>
+        <a href="javascript:;" class="weui_tabbar_item open-popup" data-target="#searchForm">
+            <div class="weui_tabbar_icon">
+                <img src="~/images/weui/icon_nav_cell.png" alt="">
+            </div>
+            <p class="weui_tabbar_label">搜索</p>
+        </a>
+    </div>
+    @helper GetStatusUrl(int status)
+    {
+        var rq = Model.Rq;
+        var parms = new com.weispa.Web.ViewModels.AdminAppointVm.AdminAppointRq();
+        if (rq.Start.HasValue)
+        {
+            parms.Start = rq.Start;
+        }
+        if (rq.End.HasValue)
+        {
+            parms.End = rq.End.Value;
+        }
+        if (rq.RoomType.HasValue)
+        {
+            parms.RoomType = rq.RoomType;
+        }
+        if (!string.IsNullOrEmpty(rq.Name))
+        {
+            parms.Name = rq.Name;
+        }
+        if (!string.IsNullOrEmpty(rq.Phone))
+        {
+            parms.Name = rq.Phone;
+        }
+        if (status != -1)
+        {
+            parms.Status = (OrderStatus)status;
+        }
+        
+        @:href="@(Url.Action("AdminAppoint", parms))"
+    }
+    @*底部筛选--end*@
+</div>
+
+
+
+@section FooterScript{
+    <script src="~/js/plugin/tool.js"></script>
+    <script src="~/js/weispa/AdminAppoint.js"></script>
+}

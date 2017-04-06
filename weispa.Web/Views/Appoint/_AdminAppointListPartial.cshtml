@@ -1,0 +1,23 @@
+﻿@{ Layout = null;}
+@using com.ccfw.Utility
+@using com.weispa.Web.Models
+@model List<com.weispa.Web.ViewModels.MyOrderVm>
+<div class="weui_panel_bd" id="list">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var myOrder in Model)
+        {
+            var order = myOrder.Order;
+            var date = order.StartTime.ToDateTime();
+            <div href="javascript:void(0);" class="weui_media_box weui_media_text" orderid="@order.OId">
+                <h4 class="weui_media_title">@(date.ToString("yy-MM-dd")) @(date.ToString("HH:mm"))～@(order.EndTime.ToDateTime().ToString("HH:mm"))</h4>
+                <p class="weui_media_desc">@(order.CustomName)（@(order.CustomPhone)） 备注：@order.Remark</p>
+                <ul class="weui_media_info">
+                    <li class="weui_media_info_meta">房间：@((RoomType)order.Room)</li>
+                    <li class="weui_media_info_meta">状态：@((OrderStatus)order.Status)</li>
+                </ul>
+                <input type="hidden" class="optStatus" value="@StringHelper.GetArrayStr(myOrder.ToStatusList)" />
+            </div>
+        }
+    }
+</div>
