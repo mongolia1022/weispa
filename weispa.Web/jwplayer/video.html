@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<title>视频播放</title>
+<meta content="" name="Keywords">
+<meta content="" name="Description">
+<meta name="format-detection" content="telephone=no">
+
+
+<link rel="stylesheet" type="text/css" href="jwplayer/style.css" />
+<style>
+.jwlogo{display:none;}
+.jwplayer{position:fixed; top:0; left:0; z-index:99999; filter:alpha(opacity=1);-moz-opacity: 1;opacity: 1;}
+.video_bg{width:100%; position:fixed; top:0; left:0; background:url(images/bg.jpg) center top no-repeat; background-size:100%; z-index:9999999999;}
+</style>
+
+<!--JQ基础文件-->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+
+<div id="mediaplayer"></div> 
+<div class="video_bg"></div>
+
+<script src="jwplayer/jwplayer.js"></script>
+<script src="jwplayer/jwpsrv.js"></script>
+<script type="text/javascript">
+var w_h = $(window).height();
+var w_w = $(window).width();
+$('.video_bg').height(w_h);
+jwplayer('mediaplayer').setup({
+    'flashplayer': 'jwplayer/jwplayer.flash.swf',
+	'image': '',
+    'id': 'playerID',
+    'width': w_w,
+	'height':w_h,
+    'file': 'http://www.bestro-alu.com.img.800cdn.com/skins/bestro/jwplayer/movie/video.mp4',
+	'autostart':'false',
+	'repeat':'always',
+  });
+  $('.video_bg').click(function(){
+	  $(this).hide();
+  		/*jwplayer().setFullscreen(true);*/
+		jwplayer('mediaplayer').play();
+	});
+</script>
+</body>
+</html>
