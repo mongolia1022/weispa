@@ -278,6 +278,17 @@
     <Content Include="js\weispa\appointForm.js" />
     <Content Include="js\weispa\appointindex.js" />
     <Content Include="js\weispa\myappoint.js" />
+    <Content Include="jwplayer\jwplayer.aspx" />
+    <Content Include="jwplayer\images\bg.jpg" />
+    <Content Include="jwplayer\js\DD_belatedPNG_0.0.8a.js" />
+    <Content Include="jwplayer\js\jquery-1.9.1.min.js" />
+    <Content Include="jwplayer\jwplayer\jwplayer.flash.swf" />
+    <Content Include="jwplayer\jwplayer\jwplayer.html5.js" />
+    <Content Include="jwplayer\jwplayer\jwplayer.js" />
+    <Content Include="jwplayer\jwplayer\jwpsrv.js" />
+    <Content Include="jwplayer\jwplayer\style.css" />
+    <Content Include="jwplayer\movie\video.mp4" />
+    <Content Include="jwplayer\video.html" />
     <Content Include="lib\fastclick.js" />
     <Content Include="lib\jquery-2.1.4.js" />
     <Content Include="lib\weui.css" />
@@ -339,7 +350,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Appoint\Success.cshtml" />
     <Content Include="Views\Appoint\_AdminAppointListPartial.cshtml" />
-    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Jwplayer.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

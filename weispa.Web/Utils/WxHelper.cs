@@ -184,7 +184,7 @@ namespace com.weispa.Web.Util
                         blGetHeaders = false
                     };
                     string returnData = CWebRequest.GetPost(mArgs);
-
+                    LogHelper.AddLog(returnData);
                     var returnJson = JsonConvert.DeserializeObject<Hashtable>(returnData);
                     if (returnJson.Contains("access_token"))
                     {
