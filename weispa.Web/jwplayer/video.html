@@ -16,6 +16,8 @@
 .jwlogo{display:none;}
 .jwplayer{position:fixed; top:0; left:0; z-index:99999; filter:alpha(opacity=1);-moz-opacity: 1;opacity: 1;}
 .video_bg{width:100%; position:fixed; top:0; left:0; background:url(images/bg.jpg) center top no-repeat; background-size:100%; z-index:9999999999;}
+.video_end{width:100%; position:fixed; top:0; left:0; background:url(images/qr.gif) #bce2f9 center top no-repeat; background-size:100%; z-index:9999999999; display:none;}
+.video_end a{width:100%; height:inherit; display:block;}
 </style>
 
 <!--JQ基础文件-->
@@ -25,6 +27,7 @@
 
 <div id="mediaplayer"></div> 
 <div class="video_bg"></div>
+<div class="video_end"><a href="http://mkf.countrygarden.com.cn/crm/page/ebei/ownerWeixin/index.html?projectType=53&code=071UyQhd06v9yu13aJjd0qPbid0UyQhd&state=code&from=groupmessage&isappinstalled=0"></a></div>
 
 <script src="jwplayer/jwplayer.js"></script>
 <script src="jwplayer/jwpsrv.js"></script>
@@ -32,21 +35,35 @@
 var w_h = $(window).height();
 var w_w = $(window).width();
 $('.video_bg').height(w_h);
+$('.video_end').height(w_h);
+$('.video_end a').height(w_h);
 jwplayer('mediaplayer').setup({
-    'flashplayer': 'jwplayer/jwplayer.flash.swf',
+	'flashplayer': 'jwplayer/jwplayer.flash.swf',
 	'image': '',
-    'id': 'playerID',
-    'width': w_w,
+	'id': 'playerID',
+	'width': w_w,
 	'height':w_h,
-    'file': 'http://www.bestro-alu.com.img.800cdn.com/skins/bestro/jwplayer/movie/video.mp4',
+	'file': 'movie/video.mp4',
 	'autostart':'false',
-	'repeat':'always',
-  });
-  $('.video_bg').click(function(){
-	  $(this).hide();
-  		/*jwplayer().setFullscreen(true);*/
-		jwplayer('mediaplayer').play();
-	});
+	'repeat':'false',
+});
+
+$('.video_bg').click(function(){
+	$(this).hide();
+	/*jwplayer().setFullscreen(true);*/
+	jwplayer('mediaplayer').play();
+	
+});
+
+$(function(){
+	jwplayer('mediaplayer').onComplete(
+		function(){
+			$('.video_end').show();
+		}
+	)
+	
+});
+	
 </script>
 </body>
 </html>
