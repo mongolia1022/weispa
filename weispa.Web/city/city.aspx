@@ -27,7 +27,7 @@
         wx.ready(function () {
             var share_link = 'http://www.lwgjjd.com/city/index.aspx';
             var title = '蝶变：新桥儿女多壮志，敢叫日月换新天';
-            var imgurl = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/78881/pattern_141.gif';
+            var imgurl = 'http://www.lwgjjd.com/city/images/yxq.png';
             wx.onMenuShareAppMessage({
                 title: title,
                 desc: '蝶变：新桥儿女多壮志，敢叫日月换新天',
@@ -68,17 +68,43 @@
 
 <body>
 
-<!--<audio style="display:none; height: 0" id="bg-music" preload="auto" src="music/fade.mp3" loop></audio>
-<script>
-document.addEventListener('DOMContentLoaded', function () {    function audioAutoPlay() {        var audio = document.getElementById('bg-music');            audio.play();        document.addEventListener("WeixinJSBridgeReady", function () {            audio.play();        }, false);    }    audioAutoPlay();});
 
-</script>-->
+<audio style="display:none; height: 0" id="bg-music" preload="auto" src="music/bgm.mp3" loop></audio>
+<div id="music_btn"></div>
+<script>
+document.addEventListener('DOMContentLoaded', function (){
+	function audioAutoPlay() {
+		var audio = document.getElementById('bg-music');
+		audio.play();
+		document.addEventListener("WeixinJSBridgeReady", function () {
+			audio.play();
+		}, false);
+	}
+	audioAutoPlay();
+	
+});
+
+$('body').find("audio").attr('id', 'bg-music')
+var myVid = document.getElementById("bg-music");
+$('#music_btn').click(function() {
+//here "sound-icon" is a anchor class. 
+var sta = myVid.muted;
+if (sta == true) {
+myVid.muted = false;
+$('#music_btn').css('background-position','center top');
+} else {
+myVid.muted = true;
+$('#music_btn').css('background-position','center bottom');
+}
+})
+</script> 
+
 
 <!-- Swiper -->
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide city1">
-        	<div class="go_back"><a href="index.html"></a></div>
+        	<div class="go_back"><a href="index.aspx"></a></div>
         	<div class="title_red"><img src="images/title1.png" width="100%" /></div>
         	<div class="car"><img src="images/car.png" width="100%" /></div>
             <div class="nav">
