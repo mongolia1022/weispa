@@ -18,7 +18,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<title>Hi~ o(*￣▽￣*)ブ，您有一个暖冬礼物待接收</title>
+<title>Hi~ o(*￣▽￣*)ブ，您有一个圣诞礼物待接收</title>
 <meta content="嘘！别让太多人知道" name="Keywords">
 <meta content="嘘！别让太多人知道" name="Description">
 <meta name="format-detection" content="telephone=no">
@@ -29,7 +29,7 @@
         wx.config(<%=configstr%>);
         wx.ready(function () {
             var share_link = 'http://www.lwgjjd.com/jwplayer/jwplayer.aspx';
-            var title = 'Hi~ o(*￣▽￣*)ブ，您有一个暖冬礼物待接收';
+            var title = 'Hi~ o(*￣▽￣*)ブ，您有一个圣诞礼物待接收';
             var imgurl = 'http://www.lwgjjd.com/jwplayer/images/bg2.jpg';
             wx.onMenuShareAppMessage({
                 title: title,
@@ -82,7 +82,22 @@
         'file': 'http://www.lwgjjd.com.img.800cdn.com/jwplayer/movie/video.mp4',
         'autostart': 'false',
         'repeat': 'false',
+		/*events:{onComplete:function(){ alert("播放结束!!!");},}*/
+		
+		
     });
+	
+	jwplayer('mediaplayer').onComplete(
+		function () {
+			$('.video_end').show();
+			$('.jwplayer').hide();
+			$('#mediaplayer').hide();
+			$('#mediaplayer_view').hide();
+			window.location.replace("video2.aspx");
+			
+		}
+		
+	)
 
     $('.video_bg').click(function () {
         $(this).hide();
@@ -90,15 +105,16 @@
         jwplayer('mediaplayer').play();
 
     });
+	
 
-    $(function () {
+    /*$(function () {
         jwplayer('mediaplayer').onComplete(
             function () {
                 $('.video_end').show();
             }
         )
 
-    });
+    });*/
 
 </script>
 </body>

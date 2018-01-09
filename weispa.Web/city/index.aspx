@@ -22,11 +22,11 @@
         wx.config(<%=configstr%>);
         wx.ready(function () {
             var share_link = 'http://www.lwgjjd.com/city/index.aspx';
-            var title = '蝶变：新桥儿女多壮志，敢叫日月换新天';
+            var title = '古镇新颜，印象新桥';
             var imgurl = 'http://www.lwgjjd.com/city/images/yxq.png';
             wx.onMenuShareAppMessage({
                 title: title,
-                desc: '蝶变：新桥儿女多壮志，敢叫日月换新天',
+                desc: '深圳市宝安区新桥街道办事处',
                 link: share_link,
                 imgUrl: imgurl
             });
