@@ -1,0 +1,699 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+<title>东风日产</title>
+
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+
+<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+
+<link rel="stylesheet" href="lib/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.css">
+
+<!--JQ基础文件-->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+
+<!--IE6 PNG透明-->
+<!--[if lte IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a');
+    </script>
+<![endif]-->
+
+<!--TAB JS-->
+<script type="text/javascript"> 
+    function setTab(m,n){ 
+        var menu=document.getElementById("tab"+m).getElementsByTagName("li");  
+        var div=document.getElementById("tablist"+m).getElementsByTagName("div"); 
+        var showdiv=[]; 
+        for (i=0; j=div[i]; i++)
+        {  
+            if((" "+div[i].className+" ").indexOf(" tablist ")!=-1)
+            {  
+                showdiv.push(div[i]); 
+            } 
+        }  
+        for(i=0;i<menu.length;i++)
+        {  
+            menu[i].className=i==n?"now":"";  
+            showdiv[i].style.display=i==n?"block":"none"; 
+        }  
+    }  
+</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="banner">
+    <img src="images/banner.jpg" width="100%" />
+    <div class="clear"></div>
+</div>
+
+<!--信息填写-->
+<div class="box_all">
+
+	<div class="capital">
+    
+    	<div class="capital_l iconfont">&#xe7ca; 姓　名：</div>
+    	<div class="capital_r"><input type="text" placeholder="请输入您的姓名" id="field_name"></div>
+        <div class="clear"></div>
+        
+        
+    	<div class="capital_l iconfont">&#xe7d3; 车　型：</div>
+    	<div class="capital_r">
+        	<div class="select-area">
+                <span class="select-value"></span>
+                <select id="field_car">
+                    <option value="">请选择车型</option>
+                    <option value="新轩逸">新轩逸</option>
+                    <option value="全新天籁">全新天籁</option>
+                    <option value="新楼兰">新楼兰</option>
+                    <option value="新生代">新生代</option>
+                    <option value="TIIDA">TIIDA</option>
+                    <option value="劲客">劲客</option>
+                    <option value="蓝鸟">蓝鸟</option>
+                    <option value="新逍客">新逍客</option>
+                    <option value="全新奇骏">全新奇骏</option>
+                    <option value="阳光">阳光</option>
+                    <option value="骊威">骊威</option>
+                </select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        
+        
+    	<div class="capital_l iconfont">&#xe638; 电　话：</div>
+    	<div class="capital_r"><input type="text" placeholder="请输入您的电话" id="field_phone"></div>
+        <div class="clear"></div>
+        
+        
+    	<div class="capital_l iconfont">&#xe78e; 经销商：</div>
+    	<div class="capital_r" id="selectbox">
+       	  <div class="select-area" style="width:21%; margin-right:2%;">
+                <span class="select-value"></span>
+               <select class="se_province" id="field_province"></select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+          <div class="select-area" style="width:21%; margin-right:2%;">
+                <span class="select-value"></span>
+              <select class="se_city" id="field_city"></select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+          <div class="select-area" style="width:20%; ">
+                <span class="select-value"></span>
+              <select class="se_store" id="field_store"></select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+      </div>
+        <div class="clear"></div>
+        
+        <div class="capital_btn"><a  href="javascript:void(0)" id="submitBtn">提交享受以下优惠</a></div>
+        
+    </div>
+    
+    <!--下拉选择select js-->
+    <script>
+    $(function () {
+        $(".select-area .select-value").each(function () {
+            if ($(this).next("select").find("option:selected").length != 0) {
+                $(this).text($(this).next("select").find("option:selected").text());
+            }
+        });
+        $(".select-area select").change(function () {
+            var value = $(this).find("option:selected").text();
+            $(this).parent(".select-area").find(".select-value").text(value);
+        });
+    });
+    </script>
+    
+</div>
+
+<!--文字介绍-->
+<div class="box_pic">
+	<img src="images/special1.jpg" width="100%" />
+	<img src="images/special2.jpg" width="100%" />
+	<img src="images/special3.jpg" width="100%" />
+	<img src="images/special4.jpg" width="100%" />
+	<img src="images/special5.jpg" width="100%" />
+	<img src="images/special6.jpg" width="100%" />
+	<img src="images/special7.jpg" width="100%" />
+    <div class="clear"></div>
+</div>
+
+<div class="shop_msg">
+	<div class="shop_msg_t">
+    	<ul>
+        	<li id="msg_t1" class="iconfont now">&#xe62c;福建地区</li>
+        	<li id="msg_t2" class="iconfont">&#xe62c;深圳地区</li>
+        	<li id="msg_t3" class="iconfont">&#xe62c;南海区域</li>
+        	<li id="msg_t4" class="iconfont">&#xe62c;粤东地区</li>
+        </ul>
+        <script>
+            $(function(){
+                $('.shop_msg_t ul li').click(function(){
+                    $(this).addClass('now');
+                    $(this).nextAll('li').removeClass('now');	
+                    $(this).prevAll('li').removeClass('now');	
+                });	
+            });
+        </script>
+    </div>
+    <div id="msg1" class="shop_msg_b block">
+    	<div class="shop_msg_b_sl" id="tab1">
+        	<ul>
+            	<li onclick="setTab(1,0)" class="now">福州</li>
+            	<li onclick="setTab(1,1)">福清</li>
+            	<li onclick="setTab(1,2)">泉州</li>
+            	<li onclick="setTab(1,3)">晋江</li>
+            	<li onclick="setTab(1,4)">厦门</li>
+            	<li onclick="setTab(1,5)">漳州</li>
+            	<li onclick="setTab(1,6)">莆田</li>
+            	<li onclick="setTab(1,7)">宁德</li>
+            	<li onclick="setTab(1,8)">南平</li>
+            	<li onclick="setTab(1,9)">三明</li>
+            	<li onclick="setTab(1,10)">龙岩</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div id="tablist1">
+        	<div class="tablist block">
+                <div class="shop_msg_b_in">
+                    福州中升福瑞   0591-83539375<br/>福州市仓山区后坂盖山投资区高旺路8号（丰泉环保仓山科技园内）
+                </div>
+                <div class="shop_msg_b_in">
+                    福州中升福新   0591-88875888<br/>福州市晋安区福光路162号（鼎制球馆一楼）
+                </div>
+                <div class="shop_msg_b_in">
+                    福州中升福裕   0591-88527777<br/>福州市仓山区福峡路755号（地铁排下站C出口）
+                </div>
+                <div class="shop_msg_b_in">
+                    福州汇京金山   0591-38292888<br/>福州市仓山区金山大道旁麦浦路与金达路交界处（金山茶城内）
+                </div>
+                <div class="shop_msg_b_in">
+                    福州汇京福飞北   0591-28065888<br/>福州市晋安区龙头路108号（绕城高速入口旁）
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    福清华盛   0591-85361122<br/>福清市石竹街道跃进村新村委大楼西侧（福夏路旁）
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    泉州汇京银河   0595-86738000<br/>泉州清濛经济开发区福厦路吉泰路交叉口（奥林匹克花园斜对面）
+                </div>
+            	<div class="shop_msg_b_in">
+                    泉州汇京亿兴   0595-86730999<br/>福建省泉州市丰泽区城东老火车站对面（华大方向）
+                </div>
+            	<div class="shop_msg_b_in">
+                    泉州汇京友联   0595-36115888<br/>泉州市安溪县城厢镇涝港开发区友联汽车城（茶都往泉州方向2公里）
+                </div>
+            	<div class="shop_msg_b_in">
+                    泉州汇京亿利   0595-36000001<br/>福建省晋江市新塘街道上郭天桥旁东风日产汇京亿利专营店
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    晋江汇京豪信   0595-86771666<br/>晋江市泉安南路福埔东风日产（海事局对面）
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    厦门塞尔福滨海   0592-3217111<br/>福建省厦门市湖里区机场港中路1697号
+                </div>
+            	<div class="shop_msg_b_in">
+                    厦门瑞荣嘉诚海沧   0592-3206666<br/>厦门市海沧区马青路1233-3号
+                </div>
+            	<div class="shop_msg_b_in">
+                    厦门塞尔福滨海   0592-3217111<br/>福建省厦门市湖里区机场港中路1697号
+                </div>
+            	<div class="shop_msg_b_in">
+                    厦门塞尔福金湖   0592-3215788<br/>厦门市湖里区金尚路1972号
+                </div>
+            	<div class="shop_msg_b_in">
+                    厦门塞尔福和顺   0592-3211777<br/>同安区集安路787-789号
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    漳州聚力合兴   0596-5011888<br/>漳州市龙文区蓝田经济开发区北一号路
+                </div>
+                <div class="shop_msg_b_in">
+                    漳州聚力  0596-2131666 , 0596-2131010<br/>漳州市迎宾大道蓝田工业开发区横一路中段店面
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    莆田华宝   0594-2939966<br/>莆田市荔城区西天尾镇涵西大道899号
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    宁德和信东侨   0593-2995888<br/>福建省宁德市东侨开发区国宝路26号 
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    南平福鑫   0599-3731158<br/>福建省建瓯市水西路271号
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    三明中升华荣   0598-8666999<br/>福建省三明市梅列区翁墩物流工业园区
+                </div>
+            </div>
+            
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    龙岩汇京龙兴   0597-5371000<br/>福建省龙岩市新罗区龙门镇物流大道305号西侧
+                </div>
+            	<div class="shop_msg_b_in">
+                    龙岩佳和   0597-2891558<br/>福建省龙岩市新罗区东兴路213号
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="msg2" class="shop_msg_b">
+    	<div class="shop_msg_b_sl" id="tab2">
+        	<ul>
+            	<li onclick="setTab(2,0)" class="now">深圳</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div id="tablist2">
+        	<div class="tablist block">
+                <div class="shop_msg_b_in">
+                    深圳东风南方华鹏   0755-82378225<br/>深圳市罗湖区延芳路东益汽车交易广场二期D1区
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳东风南方华新   0755-27473022<br/>深圳市宝安区前进一路与新安四路交汇处，天虹沃尔玛旁
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳东风南方华翔   0755-89628111<br/>深圳市龙岗中心城如意路与沙园路交叉段（龙城街道办旁）
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳裕朋   0755-88316602<br/>深圳市福田区北环大道7028号（香梅北天桥旁）
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳东风南方华旭   0755-26720506<br/>深圳市南山区白石路桂庙新村118号（深圳大学南门出口200米处）
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳新大兴   0755-27283333<br/>深圳市宝安区沙井西环路2111号
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳东风南方华瑞   0755-83888866<br/>深圳市福田区深南大道6068号联合华鹏汽车交易广场C1-2(香蜜湖度假村旁边)
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳东风南方华龙   0755-27706789<br/>深圳市龙华新区布龙路龙胜新村B区281号（地铁4号线龙胜站B出口胜龙加油站旁）
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳东风南方华景   0755-89762999<br/>深圳市龙岗大道信义汽车城
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳东风南方观澜华盛   0755-28030666<br/>深圳市龙华新区观澜福兴围社区观平路182号（福兴围幼儿园旁边）
+                </div>
+                <div class="shop_msg_b_in">
+                    深圳东风南方华昌   0755-23158889<br/>深圳市宝安区福永立新路与福洲大道交汇处花园酒店旁（福永地铁站D出口右行300米）
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="msg3" class="shop_msg_b">
+    	<div class="shop_msg_b_sl" id="tab3">
+        	<ul>
+            	<li onclick="setTab(3,0)" class="now">海口</li>
+            	<li onclick="setTab(3,1)">三亚</li>
+            	<li onclick="setTab(3,2)">琼海</li>
+            	<li onclick="setTab(3,3)">儋州</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div id="tablist3">
+        	<div class="tablist block">
+                <div class="shop_msg_b_in">
+                    海口东风南方海鹏   0898-66826518<br/>海口市南海大道73号（京江花园斜对面）
+                </div>
+                <div class="shop_msg_b_in">
+                    海口东风南方海龙   0898-65961316<br/>海南省海口市美兰区琼山大道292号
+                </div>
+                <div class="shop_msg_b_in">
+                    海口东风南方海神   0898-68606090<br/>海南省海口市秀英区南海大道246号(秀英高铁站往西800米)东风日产海神店
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    三亚东风南方海燕   0898-38210998<br/>海南省三亚市迎宾路496号
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    琼海东风南方海豹   0898-62936188<br/>海南省琼海市嘉积镇泮水大榕树头往大路镇方向1.5公里处
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    儋州东风南方军屯海兴   0898-36920666<br/>海南省儋州市那大镇伏波西路大洲桥往西800M（佳华小区旁）
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="msg4" class="shop_msg_b">
+    	<div class="shop_msg_b_sl" id="tab4">
+        	<ul>
+            	<li onclick="setTab(4,0)" class="now">汕头</li>
+            	<li onclick="setTab(4,1)">河源</li>
+            	<li onclick="setTab(4,2)">惠州</li>
+            	<li onclick="setTab(4,3)">揭阳</li>
+            	<li onclick="setTab(4,4)">梅州</li>
+            	<li onclick="setTab(4,5)">潮州</li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div id="tablist4">
+        	<div class="tablist block">
+                <div class="shop_msg_b_in">
+                    汕头中升恒利   0754-89931808<br/>汕头市潮阳区和平中寨188号广汕公路324国道旁（蕾琪化妆品隔壁）
+                </div>
+                <div class="shop_msg_b_in">
+                    汕头中升恒达   0754-88991189<br/>广东省汕头市龙湖区泰山路中段14A
+                </div>
+                <div class="shop_msg_b_in">
+                    汕尾中升恒通   0660-3813666<br/>汕尾市区海汕公路赤岭段东侧东风日产中升恒通专营店（市区交警大队隔壁）
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    河源九牧   0762-7221111<br/>广东省河源市东环路临江工业园超然汽车市场内
+                </div>
+            	<div class="shop_msg_b_in">
+                    河源合利丰   0762-3630222<br/>河源市源城区河源大道南桂山路口红绿灯200米处东风日产合利丰专营店
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    惠州中安   0752-8311366<br/>惠州市惠东县城银基大道粤惠汽车大市场1号
+                </div>
+            	<div class="shop_msg_b_in">
+                    惠州俊通   0752-2865888<br/>广东省惠州市金龙大道江北51号小区（江北车管所往北3公里）
+                </div>
+            	<div class="shop_msg_b_in">
+                    惠州天驿   0752-6207988<br/>惠州市博罗县罗阳镇广惠高速入口前1000米处
+                </div>
+            	<div class="shop_msg_b_in">
+                    惠州南菱君达   0752-7777706<br/>惠州市惠城区三栋镇惠南汽车城惠州君达东风日产4S店
+                </div>
+            	<div class="shop_msg_b_in">
+                    惠州永惠   0752-2318666<br/>广东省惠州市惠城区大湖溪广汕公路49号（蓝波湾对面）
+                </div>
+            	<div class="shop_msg_b_in">
+                    惠州安捷   0752-5182668<br/>惠州市大亚湾西区上杨龙海二路32号
+                </div>
+            	<div class="shop_msg_b_in">
+                    惠州天马   0752-2285272<br/>广东省惠州市三环路与口岸路交接处（实验中学旁）
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    揭阳恒悦   0663-2698888<br/>广东省普宁市池揭公路乌石路段东侧东风日产恒悦专营店
+                </div>
+            	<div class="shop_msg_b_in">
+                    揭阳恒宇   0663-8296888<br/>揭阳市环市北路与黄岐山大道交界处（东成渔村东侧）
+                </div>
+            </div>
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    梅州春天   0753-2368886<br/>广东省梅州市环市西路（平远路口）
+                </div>
+            	<div class="shop_msg_b_in">
+                    梅州春天梅江   0753-2305888<br/>梅州市梅江区三角镇206国道西（梅县机场右侧330米）
+                </div>
+            	<div class="shop_msg_b_in">
+                    梅州春天兴宁   0753-3211888<br/>兴宁市205国道五里段春天汽车城有限公司
+                </div>
+            </div>
+            
+            <div class="tablist">
+            	<div class="shop_msg_b_in">
+                    潮州侨山   0768-2852138<br/>潮州市潮州大道北端东风日产侨山专营店
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--区域选择 JS-->
+    <script>
+        $(function(){
+            $('.shop_msg_t ul li').click(function(){
+                var cla=$(this).attr("id");
+                var j=cla.match(/\d+\b/);
+                $('#msg'+j).addClass('block');
+                $('#msg'+j).nextAll().removeClass('block');
+                $('#msg'+j).prevAll().removeClass('block');
+            });	
+        });
+    </script>
+</div>
+
+<!--文字介绍-->
+<div class="box_pic">
+	<img src="images/special8.jpg" width="100%" />
+    <div class="clear"></div>
+</div>
+
+
+<script src="lib/jquery-2.1.4.js"></script>
+<script src="lib/fastclick.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+<script src="js/jquery-weui.js"></script>
+    <script src="../js/jquery.cxselect.min.js"></script>
+
+<script>
+    $('#selectbox').cxSelect({
+        selects: ['se_province', 'se_city', 'se_store'],
+        required: true,
+        url: [
+            {
+                'v': '福建省', 'n': '福建省', 's': [
+                    {
+                        'v': '福州市', 'n': '福州市', 's': [
+                            { 'v': '福州中升福瑞', n: '福州中升福瑞(福州市仓山区后坂盖山投资区高旺路8号（丰泉环保仓山科技园内）)' },
+                            { 'v': '福州中升福新', n: '福州中升福新(福州市晋安区福光路162号（鼎制球馆一楼）)' },
+                            { 'v': '福州中升福裕', n: '福州中升福裕(福州市仓山区福峡路755号（地铁排下站C出口）)' },
+                            { 'v': '福州汇京金山', n: '福州汇京金山(福州市仓山区金山大道旁麦浦路与金达路交界处（金山茶城内）)' },
+                            { 'v': '福州汇京福飞北', n: '福州汇京福飞北(福州市晋安区龙头路108号（绕城高速入口旁）)' },
+                        ]
+                    },
+                    {
+                        'v': '福清市', 'n': '福清市', 's': [
+                            { 'v': '福清华盛', n: '福清华盛(福清市石竹街道跃进村新村委大楼西侧（福夏路旁）)' },
+                        ]
+                    },
+                    {
+                        'v': '泉州市', 'n': '泉州市', 's': [
+                            { 'v': '泉州汇京银河', n: '泉州汇京银河(泉州清濛经济开发区福厦路吉泰路交叉口（奥林匹克花园斜对面）)' },
+                            { 'v': '泉州汇京亿兴', n: '泉州汇京亿兴(福建省泉州市丰泽区城东老火车站对面（华大方向）)' },
+                            { 'v': '泉州汇京友联', n: '泉州汇京友联(泉州市安溪县城厢镇涝港开发区友联汽车城（茶都往泉州方向2公里）)' },
+                            { 'v': '泉州汇京亿利', n: '泉州汇京亿利(福建省晋江市新塘街道上郭天桥旁东风日产汇京亿利专营店)' },
+                        ]
+                    },
+                    {
+                        'v': '晋江市', 'n': '晋江市', 's': [
+                            { 'v': '晋江汇京豪信', n: '晋江汇京豪信(晋江市泉安南路福埔东风日产（海事局对面）)' },
+
+                        ]
+                    },
+                    {
+                        'v': '厦门市', 'n': '厦门市', 's': [
+                            { 'v': '厦门塞尔福滨海', n: '厦门塞尔福滨海(福建省厦门市湖里区机场港中路1697号)' },
+                            { 'v': '厦门瑞荣嘉诚海沧', n: '厦门瑞荣嘉诚海沧(厦门市海沧区马青路1233-3号)' },
+                            { 'v': '厦门塞尔福金湖', n: '厦门塞尔福金湖(厦门市湖里区金尚路1972号)' },
+                            { 'v': '厦门塞尔福和顺', n: '厦门塞尔福和顺(同安区集安路787-789号)' },
+                        ]
+                    },
+                    {
+                        'v': '漳州市', 'n': '漳州市', 's': [
+                            { 'v': '漳州聚力合兴', n: '漳州聚力合兴(漳州市龙文区蓝田经济开发区北一号路)' },
+                            { 'v': '漳州聚力', n: '漳州聚力(漳州市迎宾大道蓝田工业开发区横一路中段店面)' },
+                        ]
+                    },
+                    {
+                        'v': '莆田市', 'n': '莆田市', 's': [
+                            { 'v': '莆田华宝', n: '莆田华宝(莆田市荔城区西天尾镇涵西大道899号)' },
+                        ]
+                    },
+                    {
+                        'v': '宁德市', 'n': '宁德市', 's': [
+                            { 'v': '宁德和信东侨', n: '宁德和信东侨(福建省宁德市东侨开发区国宝路26号)' },
+                        ]
+                    },
+                    {
+                        'v': '建瓯市', 'n': '建瓯市', 's': [
+                            { 'v': '南平福鑫', n: '南平福鑫(福建省建瓯市水西路271号)' },
+                        ]
+                    },
+                    {
+                        'v': '三明市', 'n': '三明市', 's': [
+                            { 'v': '三明中升华荣', n: '三明中升华荣(福建省三明市梅列区翁墩物流工业园区)' },
+                        ]
+                    },
+                    {
+                        'v': '龙岩市', 'n': '龙岩市', 's': [
+                            { 'v': '龙岩汇京龙兴', n: '龙岩汇京龙兴(福建省龙岩市新罗区龙门镇物流大道305号西侧)' },
+                            { 'v': '龙岩佳和', n: '龙岩佳和(福建省龙岩市新罗区东兴路213号)' },
+                        ]
+                    }
+                ]
+            },
+            {
+                'v': '海南省', 'n': '海南省', 's': [
+                    {
+                        'v': '海口市', 'n': '海口市', 's': [
+                            { 'v': '海口东风南方海鹏', n: '海口东风南方海鹏(海口市南海大道73号（京江花园斜对面）)' },
+                            { 'v': '海口东风南方海龙', n: '海口东风南方海龙(福建省龙岩市新罗区东兴路213号)' },
+                            { 'v': '海口东风南方海神', n: '海口东风南方海神(海南省海口市美兰区琼山大道292号)' },
+                        ]
+                    },
+                    {
+                        'v': '琼海市', 'n': '琼海市', 's': [
+                            { 'v': '琼海东风南方海豹', n: '琼海东风南方海豹(海南省琼海市嘉积镇泮水大榕树头往大路镇方向1.5公里处)' },
+                        ]
+                    },
+                    {
+                        'v': '三亚市', 'n': '三亚市', 's': [
+                            { 'v': '三亚东风南方海燕', n: '三亚东风南方海燕(海南省三亚市迎宾路496号)' },
+                        ]
+                    },
+                    {
+                        'v': '儋州市', 'n': '儋州市', 's': [
+                            { 'v': '儋州东风南方军屯海兴', n: '儋州东风南方军屯海兴(海南省儋州市那大镇伏波西路大洲桥往西800M（佳华小区旁）)' },
+                        ]
+                    }
+                ]
+            },
+            {
+                'v': '广东省', 'n': '广东省', 's': [
+                    {
+                        'v': '深圳市', 'n': '深圳市', 's': [
+                            { 'v': '深圳东风南方华鹏', n: '深圳东风南方华鹏(深圳市罗湖区延芳路东益汽车交易广场二期D1区)' },
+                            { 'v': '深圳东风南方华新', n: '深圳东风南方华新(深圳市宝安区前进一路与新安四路交汇处，天虹沃尔玛旁)' },
+                            { 'v': '深圳东风南方华翔', n: '深圳东风南方华翔(深圳市龙岗中心城如意路与沙园路交叉段（龙城街道办旁）)' },
+                            { 'v': '深圳裕朋', n: '深圳裕朋(深圳市福田区北环大道7028号（香梅北天桥旁）)' },
+                            { 'v': '深圳东风南方华旭', n: '深圳东风南方华旭(深圳市南山区白石路桂庙新村118号（深圳大学南门出口200米处）)' },
+                            { 'v': '深圳新大兴', n: '深圳新大兴(深圳市宝安区沙井西环路2111号)' },
+                            { 'v': '深圳东风南方华瑞', n: '深圳东风南方华瑞(深圳市福田区深南大道6068号联合华鹏汽车交易广场C1-2(香蜜湖度假村旁边))' },
+                            { 'v': '深圳东风南方华龙', n: '深圳东风南方华龙(深圳市龙华新区布龙路龙胜新村B区281号（地铁4号线龙胜站B出口胜龙加油站旁）)' },
+                            { 'v': '深圳东风南方华景', n: '深圳东风南方华景(深圳市龙岗大道信义汽车城)' },
+                            { 'v': '深圳东风南方观澜华盛', n: '深圳东风南方观澜华盛(深圳市龙华新区观澜福兴围社区观平路182号（福兴围幼儿园旁边）)' },
+                            { 'v': '深圳东风南方华昌', n: '深圳东风南方华昌(深圳市宝安区福永立新路与福洲大道交汇处花园酒店旁（福永地铁站D出口右行300米）)' },
+                        ]
+                    },
+                    {
+                        'v': '汕头市龙', 'n': '汕头市龙', 's': [
+                            { 'v': '汕头中升恒利', n: '汕头中升恒利(汕头市潮阳区和平中寨188号广汕公路324国道旁（蕾琪化妆品隔壁）)' },
+                            { 'v': '汕头中升恒达', n: '汕头中升恒达(广东省汕头市龙湖区泰山路中段14A)' },
+                        ]
+                    },
+                    {
+                        'v': '汕尾市', 'n': '汕尾市', 's': [
+                            { 'v': '汕尾中升恒通', n: '汕尾中升恒通(汕尾市区海汕公路赤岭段东侧东风日产中升恒通专营店（市区交警大队隔壁）)' },
+                        ]
+                    },
+                    {
+                        'v': '河源市', 'n': '河源市', 's': [
+                            { 'v': '河源九牧', n: '河源九牧(广东省河源市东环路临江工业园超然汽车市场内)' },
+                            { 'v': '河源合利丰', n: '河源合利丰(河源市源城区河源大道南桂山路口红绿灯200米处东风日产合利丰专营店)' },
+                        ]
+                    },
+                    {
+                        'v': '惠州市', 'n': '惠州市', 's': [
+                            { 'v': '惠州中安', n: '惠州中安(惠州市惠东县城银基大道粤惠汽车大市场1号)' },
+                            { 'v': '惠州俊通', n: '惠州俊通(广东省惠州市金龙大道江北51号小区（江北车管所往北3公里）)' },
+                            { 'v': '惠州天驿', n: '惠州天驿(惠州市博罗县罗阳镇广惠高速入口前1000米处)' },
+                            { 'v': '惠州南菱君达', n: '惠州南菱君达(惠州市惠城区三栋镇惠南汽车城惠州君达东风日产4S店)' },
+                            { 'v': '惠州永惠', n: '惠州永惠(广东省惠州市惠城区大湖溪广汕公路49号（蓝波湾对面）)' },
+                            { 'v': '惠州安捷', n: '惠州安捷(惠州市大亚湾西区上杨龙海二路32号)' },
+                            { 'v': '惠州天马', n: '惠州天马(广东省惠州市三环路与口岸路交接处（实验中学旁）)' },
+                        ]
+                    },
+                    {
+                        'v': '揭阳市', 'n': '揭阳市', 's': [
+                            { 'v': '揭阳恒悦', n: '揭阳恒悦(广东省普宁市池揭公路乌石路段东侧东风日产恒悦专营店)' },
+                            { 'v': '揭阳恒宇', n: '揭阳恒宇(揭阳市环市北路与黄岐山大道交界处（东成渔村东侧）)' },
+                        ]
+                    },
+                    {
+                        'v': '莆田市', 'n': '莆田市', 's': [
+                            { 'v': '梅州春天', n: '梅州春天(广东省梅州市环市西路（平远路口）)' },
+                            { 'v': '梅州春天梅江', n: '梅州春天梅江(梅州市梅江区三角镇206国道西（梅县机场右侧330米）)' },
+                            { 'v': '梅州春天兴宁', n: '梅州春天兴宁(兴宁市205国道五里段春天汽车城有限公司)' },
+                        ]
+                    },
+                    {
+                        'v': '潮州市', 'n': '潮州市', 's': [
+                            { 'v': '潮州侨山', n: '潮州侨山(潮州市潮州大道北端东风日产侨山专营店)' },
+                        ]
+                    }
+                ]
+            }
+        ]
+    });
+
+    var can = true;
+    $(function() {
+        $('#submitBtn').click(function () {
+            if (!can) {
+                alert('请不要重复提交');
+                return;
+            }
+
+            var req = {
+                name: $('#field_name').val(),
+                car: $('#field_car').val(),
+                phone: $('#field_phone').val(),
+                province: $('#field_province').val(),
+                city: $('#field_city').val(),
+                store: $('#field_store').val(),
+                season:1
+        };
+            can = false;
+            $.ajax({
+                url: '/nissan/post.aspx?r=' + Math.random(),
+                data: {
+                    data: JSON.stringify(req)
+                },
+                dataType: 'json',
+                type: "post",
+                success: function (d) {
+                    if (d.success==0) {
+                        can = false;
+                        alert("提交成功");
+                    } else {
+                        can = true;
+                        alert(d.info);
+                    }
+                },
+                error: function (e, d) {
+                    can = true;
+                    alert("提交失败");
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

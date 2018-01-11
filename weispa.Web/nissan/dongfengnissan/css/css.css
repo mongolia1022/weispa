@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+.banner{width:100%;}
+.banner img{float:left;}
+
+.box_all{width:94%; margin:0 auto; margin-top:32px; background:url(../images/box_bg.jpg); background-size:100% 100%; padding:50px 0;}
+
+.capital{width:100%; font-size:16px;}
+.capital_l{width:33%; height:40px; float:left; line-height:40px; text-align:right; margin-bottom:20px; color:#cc1034; font-weight:bold;}
+.capital_r{width:58%; height:40px; float:right; margin-right:8%; margin-bottom:20px; position:relative;}
+.capital_r input{width:90%; height:40px; border:1px solid #cc1034; border-radius:5px; background:#fff; padding:0 5%; font-size:16px;}
+
+.capital_btn{width:100%; height:42px; margin:0 auto; text-align:center;}
+.capital_btn a{ padding:0 10px; height:42px; line-height:42px; color:#fff; font-size:18px; background:#cc1034; border:none; border-radius:5px; display:inline-block;}
+.capital_btn a:active{background:#e33254;}
+
+/*选择框*/
+.select-area{position: relative; overflow: hidden; width:90%; height:40px; border:none; background:#fff; border-radius:5px; padding:0 5%; color:#484848; font-size:12px; border:1px solid #cc1034; font-size:16px; float:left;}
+.select-area select{position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height:40px;}
+.select-value{height:40px; line-height:40px;}
+.select_dot{height:12px; width:12px; position:absolute; right:5%; top:50%; margin-top:-8px; font-size:12px; color:#999;}
+
+.box_pic{}
+.box_pic img{float:left;}
+
+.shop_msg{width:92%; margin:0 auto; font-size:14px;} 
+.shop_msg_t{width:100%; height:32px; line-height:32px; border:1px solid #cc1034; text-align:center; overflow:hidden;}
+.shop_msg_t ul li{width:25%; height:32px; float:left; background:url(../images/shop_msg_bg.gif) right top repeat-y; color:#cc1034;}
+.shop_msg_t ul li:last-child{background:none;}
+.shop_msg_t ul li.now{background:#cc1034; color:#fff;}
+.shop_msg_b{width:100%; border:1px solid #cc1034; border-top:none; display:none;}
+.shop_msg_b_sl{width:100%;}
+.shop_msg_b_sl ul li{width:14%; height:30px; line-height:30px; text-align:center; border:1px solid #cc1034; color:#cc1034; border-radius:5px; float:left; margin-left:4.5%; margin-top:12px;}
+.shop_msg_b_sl ul li.now{background:#cc1034; color:#fff;}
+#tablist1{margin-top:10px;}
+#tablist2{margin-top:10px;}
+#tablist3{margin-top:10px;}
+#tablist4{margin-top:10px;}
+.shop_msg_b_in{margin:0 4.5%; margin-bottom:10px; line-height:24px; color:#484848; border-bottom:1px dashed #d9d9d9; font-size:14px; padding-bottom:10px;}
+.block{display:block;}
+.tablist{display: none;}
+.block{display: block;}
