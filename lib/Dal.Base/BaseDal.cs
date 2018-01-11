@@ -83,7 +83,7 @@ namespace com.ccfw.Dal.Base
             {
                 if (_TableName == "")
                 {
-                    _TableName = "[" + typeof(T).Name + "]";
+                    _TableName = "" + typeof(T).Name + "";
                 }
                 return _TableName;
             }
@@ -298,7 +298,7 @@ namespace com.ccfw.Dal.Base
                     if (t.PrimaryKey == pis[i].Name)
                         continue;
                 }
-                strSql.Append("[" + pis[i].Name + "],"); //构造SQL语句前半部份 
+                strSql.Append("" + pis[i].Name + ","); //构造SQL语句前半部份 
                 strParameter.Append("@" + pis[i].Name + ","); //构造参数SQL语句
                 listParam.Add(new DbParam
                 {
@@ -313,7 +313,7 @@ namespace com.ccfw.Dal.Base
             strSql.Append(strParameter + ";");
             if (t.IsAutoId)
             {
-                strSql.Append("select SCOPE_IDENTITY()");
+                //strSql.Append("select SCOPE_IDENTITY()");
             }
             Database db = DatabaseFactory.CreateDatabase(connName);
             using (DbCommand cmd = db.GetSqlStringCommand(strSql.ToString()))
@@ -954,7 +954,7 @@ namespace com.ccfw.Dal.Base
                 // typeof (T).GetProperties(BindingFlags.Instance | BindingFlags.DeclaredOnly | BindingFlags.Public);
                 foreach (PropertyInfo pi in pis)
                 {
-                    sColList += "[" + pi.Name + "],";
+                    sColList += "" + pi.Name + ",";
                 }
                 sColList = sColList.Substring(0, sColList.Length - 1);
             }
@@ -980,31 +980,26 @@ namespace com.ccfw.Dal.Base
             {
                 if (PageIndex == 1)
                 {
-                    strSql.Append(string.Format("select top {0} {1} from {2} {3} ",
-                                                PageSize, sColList, tblName, strOrder));
+                    strSql.Append(string.Format("select {0} from {1} {2} limit {3}",
+                                                sColList, tblName, strOrder,PageSize));
                 }
                 else
                 {
-                    strSql.Append(string.Format("select {0} from(select {1}, row_number() over({2}) as row from {3}",
-                                                sColList, sColList, strOrder, tblName));
-                    strSql.Append(string.Format(") a where row between {0} and {1}", (PageIndex - 1) * PageSize + 1,
-                                                PageIndex * PageSize));
+                    strSql.Append(string.Format("select {0} from {1} {2} limit {3},{4}",
+                                                sColList, tblName, strOrder, (PageIndex - 1) * PageSize + 1,PageSize));
                 }
             }
             else
             {
                 if (PageIndex == 1)
                 {
-                    strSql.Append(string.Format("select top {0} {1} from {2} Where {3} {4}",
-                                                PageSize, sColList, tblName, strWhere, strOrder));
+                    strSql.Append(string.Format("select {0} from {1} Where {2} {3} limit {4}",
+                                                 sColList, tblName, strWhere, strOrder,PageSize));
                 }
                 else
                 {
-                    strSql.Append(string.Format("select {0} from(select {1}, row_number() over({2}) as row from {3}",
-                                                sColList, sColList, strOrder, tblName));
-                    strSql.Append(string.Format(" where {0}", strWhere));
-                    strSql.Append(string.Format(") a where row between {0} and {1}", (PageIndex - 1) * PageSize + 1,
-                                                PageIndex * PageSize));
+                    strSql.Append(string.Format("select {0} from {1} where {2} {3} limit {4},{5}",
+                                                sColList, tblName, strWhere, strOrder, (PageIndex - 1) * PageSize + 1,PageSize));
                 }
             }
             return strSql.ToString();
