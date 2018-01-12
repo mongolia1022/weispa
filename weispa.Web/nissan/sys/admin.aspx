@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" ResponseEncoding="gbk"%>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="webdiyer" %>
 <%@ Import Namespace="System.IO" %>
 <%@ Import Namespace="System.Web.Script.Serialization" %>
 <%@ Import Namespace="com.ccfw.Dal.Base" %>
@@ -6,27 +7,35 @@
 <%@ Import Namespace="com.weispa.Web.Util" %>
 <%@ Import Namespace="CsvHelper" %>
 <%@ Import Namespace="Newtonsoft.Json" %>
+<%@ Import Namespace="com.ccfw.Utility" %>
 <script language="C#" runat="server">
-    void Page_Load(object   sender,   EventArgs   e)
+    private int season = 0;
+
+    void Page_Load(object sender, EventArgs e)
     {
-        
+        season = ConvertHelper.StrToInt(Request["season"]);
+        if (!IsPostBack)
+            FillData();
     }
+
+    protected List<NissanCustom> list = null;
 
     protected void btn1_Click(object sender, EventArgs e)
     {
-        export(1);
+        export();
     }
-    protected void btn2_Click(object sender, EventArgs e)
-    {
-        export(2);
-    }
-    protected void btn3_Click(object sender, EventArgs e)
-    {
-        export(3);
-    }
-    
 
-    private void export(int season)
+    protected void Pager_pageChanged(object sender, EventArgs e)
+    {
+        FillData();
+    }
+
+    private void FillData()
+    {
+        list = new BaseDAL<NissanCustom>().GetList("season=" + season, pager.PageSize, pager.CurrentPageIndex, true, "*", "id");
+    }
+
+    private void export()
     {
         string filename = string.Format("活动{0}数据.csv", season);
         Response.ContentType = "application/CSV";
@@ -69,7 +78,7 @@
         Response.End();
     }
 
-    public class NissanCustom:BaseModel
+    public class NissanCustom : BaseModel
     {
         public NissanCustom()
         {
@@ -77,7 +86,7 @@
             IsAutoId = true;
             ConnName = "nissan";
         }
-        
+
         public int id { get; set; }
 
         public string name { get; set; }
@@ -89,13 +98,15 @@
         public string province { get; set; }
 
         public string city { get; set; }
-        
+
         public string store { get; set; }
 
         public DateTime createOn { get; set; }
 
         public int season { get; set; }
-    } 
+    }
+
+
 </script>
 <!DOCTYPE html>
 
@@ -112,10 +123,58 @@
     <form id="form1" runat="server">
         <div class="admin-main">
 			<blockquote class="layui-elem-quote">
-<asp:LinkButton runat="server" class="layui-btn layui-btn-small"  OnClick="btn1_Click"><i class="layui-icon">&#xe615;</i> 导出活动1</asp:LinkButton>
-<asp:LinkButton runat="server" class="layui-btn layui-btn-small"  OnClick="btn2_Click"><i class="layui-icon">&#xe615;</i> 导出活动2</asp:LinkButton>
-<asp:LinkButton runat="server" class="layui-btn layui-btn-small"  OnClick="btn3_Click"><i class="layui-icon">&#xe615;</i> 导出活动3</asp:LinkButton>
+<asp:LinkButton runat="server" class="layui-btn layui-btn-small"  OnClick="btn1_Click"><i class="layui-icon">&#xe615;</i> 导出数据</asp:LinkButton>
 			</blockquote>
+            
+            <fieldset class="layui-elem-field">
+				<legend>活动<%=season %>报名信息</legend>
+				<div class="layui-field-box">
+					<table class="site-table table-hover">
+						<thead>
+							<tr>
+								<th><input type="checkbox" id="selected-all"></th>
+								<th>id</th>
+								<th>姓名</th>
+								<th>手机</th>
+								<th>车型</th>
+								<th>省</th>
+								<th>市</th>
+								<th>专卖店</th>
+                                <th>报名时间</th>
+							</tr>
+						</thead>
+						<tbody>
+						    <% foreach (var item in list)
+						       {%>
+						           <tr>
+								<td><%=item.id %></td>
+								<td><%=item.name %></td>
+								<td><%=item.phone %></td>
+								<td><%=item.car %></td>
+								<td><%=item.province %></td>
+								<td><%=item.province %></td>
+                                <td><%=item.city %></td>
+                                <td><%=item.store %></td>
+                                <td><%=item.createOn.ToString("yyyy-MM-dd HH:mm:ss") %></td>
+							</tr>
+						       <%} %>
+						</tbody>
+					</table>
+				</div>
+			</fieldset>
+            
+            <div class="admin-table-page">
+				<div id="page" class="page">
+				    <webdiyer:AspNetPager ID="pager" CssClass="paginator" CurrentPageButtonClass="cpb"
+                                                Width="99%" PageSize="20" runat="server" AlwaysShow="true" FirstPageText="<<"
+                                                LastPageText=">>" NextPageText=">" PrevPageText="<" ShowCustomInfoSection="Left"
+                                                ShowInputBox="Never" OnPageChanged="Pager_pageChanged" CustomInfoTextAlign="Left"
+                                                CurrentPageButtonPosition="Beginning" CustomInfoHTML="第 %CurrentPageIndex% 页，共 %PageCount%页,共%RecordCount%条"
+                                                ShowPageIndexBox="Always" PageIndexBoxType="DropDownList" TextBeforePageIndexBox="转到第"
+                                                TextAfterPageIndexBox="页">
+                                            </webdiyer:AspNetPager>
+				</div>
+			</div>
             </div>
     </form>
 </body>

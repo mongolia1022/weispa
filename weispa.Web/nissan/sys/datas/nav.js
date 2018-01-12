@@ -3,8 +3,17 @@ var navs = [{
 	"icon": "fa-cubes",
 	"spread": true,
 	"children": [{
-		"title": "数据导出",
+		"title": "活动1",
 		"icon": "&#xe641;",
-		"href": "admin.aspx"
-	}]
+		"href": "admin.aspx?season=1"
+	}, {
+	    "title": "活动2",
+	    "icon": "&#xe641;",
+	    "href": "admin.aspx?season=2"
+	},{
+		"title": "活动3",
+	"icon": "&#xe641;",
+	"href": "admin.aspx?season=3"
+}
+	]
 }];

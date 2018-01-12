@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AspNetPager, Version=7.5.1.0, Culture=neutral, PublicKeyToken=fb0a0fe055d40fd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNetPager_CN.7.5.1\lib\AspNetPager.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="CsvHelper">
       <HintPath>..\reference\CsvHelper.dll</HintPath>
     </Reference>
