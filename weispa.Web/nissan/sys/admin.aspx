@@ -14,10 +14,10 @@
     void Page_Load(object sender, EventArgs e)
     {
         season = ConvertHelper.StrToInt(Request["season"]);
-        var cookieInfo=CookieHelper.GetCookie("nissan"+season);
+        var cookieInfo = CookieHelper.GetCookie("nissan" + season);
         if (string.IsNullOrEmpty(cookieInfo))
         {
-            Response.Redirect("login.html?season=" + season);
+            Response.Redirect("login.aspx?season=" + season);
             return;
         }
 
@@ -39,6 +39,7 @@
 
     private void FillData()
     {
+        pager.RecordCount = new BaseDAL<NissanCustom>().GetCount("season=" + season);
         list = new BaseDAL<NissanCustom>().GetList("season=" + season, pager.PageSize, pager.CurrentPageIndex, true, "*", "id");
     }
 

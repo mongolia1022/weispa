@@ -28,6 +28,7 @@
 		<title>登录</title>
 		<link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" />
 		<link rel="stylesheet" href="css/login.css" />
+        <script type="text/javascript" src="../dongfengnissan/js/jquery-1.9.1.min.js"></script>
 	</head>
 
 	<body class="beg-login-bg">
@@ -36,7 +37,6 @@
 				<h1>后台登录</h1>
 			</header>
 			<div class="beg-login-main">
-				<form action="/manage/login" class="layui-form" method="post"><input name="__RequestVerificationToken" type="hidden" value="fkfh8D89BFqTdrE2iiSdG_L781RSRtdWOH411poVUWhxzA5MzI8es07g6KPYQh9Log-xf84pIR2RIAEkOokZL3Ee3UKmX0Jc8bW8jOdhqo81" />
 					<div class="layui-form-item">
 						<label class="beg-login-icon">
                         <i class="layui-icon">&#xe612;</i>
@@ -55,13 +55,12 @@
 							<input type="checkbox" name="rememberMe" value="true" lay-skin="switch" checked title="记住帐号">
 						</div>
 						<div class="beg-pull-right">
-							<button class="layui-btn layui-btn-primary" lay-submit lay-filter="login" id="loginBtn">
+							<button class="layui-btn layui-btn-primary" lay-filter="login" id="loginBtn">
                             <i class="layui-icon">&#xe650;</i> 登录
                         </button>
 						</div>
 						<div class="beg-clear"></div>
 					</div>
-				</form>
 			</div>
 			<footer>
 				<p></p>
@@ -69,17 +68,17 @@
 		</div>
 		<script type="text/javascript" src="plugins/layui/layui.js"></script>
 	<script>
-	    layui.use(['layer', 'form'], function() {
-	        var layer = layui.layer,
-	            $ = layui.jquery,
-	            form = layui.form();
+	    //layui.use(['layer', 'form'], function() {
+	    //    var layer = layui.layer,
+	    //        $ = layui.jquery,
+	    //        form = layui.form();
 
-	        form.on('submit(login)', function(data) {
+	    //    form.on('submit(login)', function(data) {
 
-	            location.href = 'index.html';
-	            return false;
-	        });
-	    });
+	    //        location.href = 'index.html';
+	    //        return false;
+	    //    });
+	    //});
 	</script>
 
 	<script>
@@ -104,8 +103,7 @@
 	                }
 	            },
 	            error: function (e, d) {
-	                can = true;
-	                alert("提交失败");
+	                alert("登录失败");
 	            }
 	        });
 	    });

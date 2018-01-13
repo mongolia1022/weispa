@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -65,7 +65,7 @@ var showdiv=[];
 	<div class="capital">
     
     	<div class="capital_l iconfont">&#xe7ca; 姓　名：</div>
-    	<div class="capital_r"><input type="text" placeholder="请输入您的姓名"></div>
+    	<div class="capital_r"><input type="text" placeholder="请输入您的姓名" id="field_name"></div>
         <div class="clear"></div>
         
         
@@ -73,10 +73,12 @@ var showdiv=[];
     	<div class="capital_r">
         	<div class="select-area">
                 <span class="select-value"></span>
-                <select>
-                   <option>请选择车型</option>
-                   <option>车型1</option>
-                   <option>车型2</option>
+                <select id="field_car">
+                    <option value="">请选择车型</option>
+                    <option value="全新奇骏">全新奇骏</option>
+                    <option value="新楼兰">新楼兰</option>
+                    <option value="全新逍客">全新逍客</option>
+                    <option value="全新劲客">全新劲客</option>
                 </select>
                 <div class="select_dot iconfont">&#xe615;</div>
             </div>
@@ -85,40 +87,31 @@ var showdiv=[];
         
         
     	<div class="capital_l iconfont">&#xe638; 电　话：</div>
-    	<div class="capital_r"><input type="text" placeholder="请输入您的电话"></div>
+    	<div class="capital_r"><input type="text" placeholder="请输入您的电话" id="field_phone"></div>
         <div class="clear"></div>
         
         
     	<div class="capital_l iconfont">&#xe78e; 经销商：</div>
-    	<div class="capital_r">
-       	  <div class="select-area" style="width:21%; margin-right:2%;">
+        <div class="capital_r" id="selectbox">
+            <div class="select-area" style="width:21%; margin-right:2%;">
                 <span class="select-value"></span>
-                <select>
-                   <option>省</option>
-                   <option>车型1</option>
-                   <option>车型2</option>
+                <select class="se_province" id="field_province">
                 </select>
                 <div class="select_dot iconfont">&#xe615;</div>
             </div>
-          <div class="select-area" style="width:21%; margin-right:2%;">
+            <div class="select-area" style="width:21%; margin-right:2%;">
                 <span class="select-value"></span>
-                <select>
-                   <option>市</option>
-                   <option>车型1</option>
-                   <option>车型2</option>
+                <select class="se_city" id="field_city">
                 </select>
                 <div class="select_dot iconfont">&#xe615;</div>
             </div>
-          <div class="select-area" style="width:20%; ">
+            <div class="select-area" style="width:20%; ">
                 <span class="select-value"></span>
-                <select>
-                   <option>经销商</option>
-                   <option>车型1</option>
-                   <option>车型2</option>
+                <select class="se_store" id="field_store">
                 </select>
                 <div class="select_dot iconfont">&#xe615;</div>
             </div>
-      </div>
+        </div>
         <div class="clear"></div>
         
         <div class="capital_btn"><a  href="">提交享受以下优惠</a></div>
@@ -235,6 +228,139 @@ var showdiv=[];
   });
 </script>
 <script src="js/jquery-weui.js"></script>
+    <script src="../js/jquery.cxselect.min.js"></script>
+
+    <script>
+        $('#selectbox').cxSelect({
+            selects: ['se_province', 'se_city', 'se_store'],
+            required: true,
+            url: [
+                {
+                    'v': '湖南省', 'n': '湖南省', 's': [
+                        {
+                            'v': '长沙市', 'n': '长沙市', 's': [
+                                { 'v': '长沙星沙', n: '长沙星沙(湖南省长沙市经济技术开发区中南汽车大世界金茂西路东头H13、H14栋)' },
+                                { 'v': '长沙兰天河西', n: '长沙兰天河西(湖南省长沙市岳麓区岳麓大道375号)' },
+                                { 'v': '长沙兰天含浦', n: '长沙兰天含浦(湖南省长沙市岳麓区云栖路与含浦大道交汇路口（过猴子石大桥西行2公里）)' },
+                                { 'v': '长沙兰天城南', n: '长沙兰天城南(长沙市雨花区环保科技产业园黄谷路878号（汽车南站往南2公里）东风日产长沙兰天城南专营店)' },
+                                { 'v': '长沙兰天城西', n: '长沙兰天城西(湖南省长沙市岳麓大道西段河西汽车城M3栋)' },
+                                { 'v': '长沙华洋星城', n: '长沙华洋星城(湖南省长沙市雨花区万家丽中路一段370号)' },
+                                { 'v': '浏阳中拓诚丰集里', n: '浏阳中拓诚丰集里(浏阳市西环路平水工业小区)' },
+                                { 'v': '宁乡中拓瑞宁', n: '宁乡中拓瑞宁(长沙市宁乡县白马桥乡正龙村（宁乡县二环南路汽车南站旁）)' },
+                            ]
+                        },
+                        {
+                            'v': '株洲市', 'n': '株洲市', 's': [
+                                { 'v': '株洲海联', n: '株洲海联(株洲市红港路（国家）汽车城内）)' },
+                                { 'v': '株洲兰天河西', n: '株洲兰天河西(株洲市天元区湘山路47号)' },
+                                { 'v': '株洲兰天攸县', n: '株洲兰天攸县(湖南省攸县江桥街道办事处谭桥社区张家塘组)' },
+                            ]
+                        },
+                        {
+                            'v': '衡阳市', 'n': '衡阳市', 's': [
+                                { 'v': '衡阳高卫', n: '衡阳高卫(湖南省衡阳市蒸湘区杨柳村二组杨柳汽贸城（西外环路）)' },
+                                { 'v': '衡阳高翔', n: '衡阳高翔(衡阳市107国道旁（华源市场往南岳方向500米）)' },
+                            ]
+                        },
+                        {
+                            'v': '永州市', 'n': '永州市', 's': [
+                                { 'v': '永州高翔', n: '永州高翔(湖南省永州市冷水滩区永州大道润之路交叉口东北角)' },
+                            ]
+                        },
+                        {
+                            'v': '郴州市', 'n': '郴州市', 's': [
+                                { 'v': '郴州日通', n: '郴州日通(湖南省郴州市郴江路石榴湾处（第一职中旁）)' },
+                            ]
+                        },
+                        {
+                            'v': '常德市', 'n': '常德市', 's': [
+                                { 'v': '常德柳城', n: '常德柳城(东风日产柳城店位于常德市火车站往东1000米，市公路局对面。)' },
+                                { 'v': '常德日丰', n: '常德日丰(常德市武陵区常德大道3555号（新世纪汽车城对面）)' },
+                            ]
+                        },
+                        {
+                            'v': '岳阳市', 'n': '岳阳市', 's': [
+                                { 'v': '岳阳华日', n: '岳阳华日(湖南省岳阳市巴陵东路402号（原107国道收费处）)' },
+                                { 'v': '岳阳华日南苑', n: '岳阳华日南苑(湖南省岳阳市岳阳楼区学院路郭镇汽车城)' },
+                            ]
+                        },
+                        {
+                            'v': '怀化市', 'n': '怀化市', 's': [
+                                { 'v': '怀化兰天恒裕', n: '怀化兰天恒裕(湖南省怀化市沿河路58号)' },
+                            ]
+                        },
+                        {
+                            'v': '娄底市', 'n': '娄底市', 's': [
+                                { 'v': '娄底兰天', n: '娄底兰天(娄底市娄星区扶青路上瑞高速连接线（武警支队前600米）)' },
+                            ]
+                        },
+                        {
+                            'v': '邵阳市', 'n': '邵阳市', 's': [
+                                { 'v': '邵阳兰天', n: '邵阳兰天(邵阳市双清区邵阳大道与大兴路交叉路口)' },
+                            ]
+                        },
+                        {
+                            'v': '湘潭市', 'n': '湘潭市', 's': [
+                                { 'v': '湘潭九华', n: '湘潭九华(湖南省湘潭市九华经济区吉利中路8号)' },
+                            ]
+                        },
+                        {
+                            'v': '益阳市', 'n': '益阳市', 's': [
+                                { 'v': '益阳兰天', n: '益阳兰天(湖南省益阳市十州路)' },
+                            ]
+                        },
+                        {
+                            'v': '吉首市', 'n': '吉首市', 's': [
+                                { 'v': '吉首吉日', n: '吉首吉日(湖南省吉首市武陵东路大田湾（城东加油站下200米）)' },
+                            ]
+                        }
+                    ]
+                }
+            ]
+        });
+
+        var can = true;
+        $(function () {
+            $('#submitBtn').click(function () {
+                if (!can) {
+                    alert('请不要重复提交');
+                    return;
+                }
+
+                var req = {
+                    name: $('#field_name').val(),
+                    car: $('#field_car').val(),
+                    phone: $('#field_phone').val(),
+                    province: $('#field_province').val(),
+                    city: $('#field_city').val(),
+                    store: $('#field_store').val(),
+                    season: 3
+                };
+                can = false;
+                $.ajax({
+                    url: '/nissan/post.aspx?r=' + Math.random(),
+                    data: {
+                        data: JSON.stringify(req)
+                    },
+                    dataType: 'json',
+                    type: "post",
+                    success: function (d) {
+                        if (d.success == 0) {
+                            can = false;
+                            alert("提交成功");
+                        } else {
+                            can = true;
+                            alert(d.info);
+                        }
+                    },
+                    error: function (e, d) {
+                        can = true;
+                        alert("提交失败");
+                    }
+                });
+            });
+        });
+    </script>
 
 
 </body>

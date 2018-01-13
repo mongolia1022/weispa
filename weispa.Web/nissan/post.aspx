@@ -2,6 +2,7 @@
 <%@ Import Namespace="System.Web.Script.Serialization" %>
 <%@ Import Namespace="com.ccfw.Dal.Base" %>
 <%@ Import Namespace="com.ccfw.Model.Base" %>
+<%@ Import Namespace="com.ccfw.Utility" %>
 <%@ Import Namespace="com.weispa.Web.Util" %>
 <%@ Import Namespace="Newtonsoft.Json" %>
 <script language="C#" runat="server">
@@ -58,6 +59,10 @@
         }
         
         dal.Add(model);
+        
+        RequestArgs arg=new RequestArgs();
+
+        
         Response.Write(JsonConvert.SerializeObject(new { success = 0, info = "报名成功" }));
         Response.End();
     }
@@ -95,5 +100,26 @@
         public DateTime createOn { get; set; }
 
         public int season { get; set; }
-    } 
+    }
+
+    private void apiService()
+    {
+        RequestArgs mArgs = new RequestArgs
+        {
+            Encode = "utf-8",
+            Method = "POST",
+            TimeOut = 3000,
+            Url = "http://202.96.191.228:8080/MediaInterface/BaseInfoService.svc",
+            postData = JsonConvert.SerializeObject(new {})
+        };
+        try
+        {
+            var returnData = CWebRequest.GetPost(mArgs);
+            LogHelper.AddLog(returnData);
+        }
+        catch (Exception ex)
+        {
+            LogHelper.AddLog(ex.ToString());
+        }
+    }
 </script>
