@@ -1,4 +1,23 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="C#" ResponseEncoding="gbk"%>
+<%@ Register Assembly="AspNetPager" Namespace="Wuqi.Webdiyer" TagPrefix="webdiyer" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="System.Web.Script.Serialization" %>
+<%@ Import Namespace="com.ccfw.Dal.Base" %>
+<%@ Import Namespace="com.ccfw.Model.Base" %>
+<%@ Import Namespace="com.weispa.Web.Util" %>
+<%@ Import Namespace="CsvHelper" %>
+<%@ Import Namespace="Newtonsoft.Json" %>
+<%@ Import Namespace="com.ccfw.Utility" %>
+<script language="C#" runat="server">
+
+    protected int season = 0;
+    void Page_Load(object sender, EventArgs e)
+    {
+        season = ConvertHelper.StrToInt(Request["season"]);
+    }
+</script>
+
+<!DOCTYPE html>
 
 <html>
 
@@ -45,7 +64,7 @@
 				</form>
 			</div>
 			<footer>
-				<p>Beginner © www.zhengjinfan.cn</p>
+				<p></p>
 			</footer>
 		</div>
 		<script type="text/javascript" src="plugins/layui/layui.js"></script>
@@ -65,13 +84,13 @@
 
 	<script>
         $('#loginBtn').click(function() {
-	        var req = {
-	            name: $('#field_name').val(),
-	            pw: $('#field_pw').val(),
-                season=
-	        };
+            var req = {
+                name: $('#field_name').val(),
+                pw: $('#field_pw').val(),
+                season:<%=season%>,
+            };
 	        $.ajax({
-	            url: '/nissan/sys/login.aspx?r=' + Math.random(),
+	            url: '/nissan/sys/loginpost.aspx?r=' + Math.random(),
 	            data: {
 	                data: JSON.stringify(req)
 	            },
@@ -79,6 +98,7 @@
 	            type: "post",
 	            success: function (d) {
 	                if (d.success == 0) {
+	                    location.href = "admin.aspx?season=<%=season%>";
 	                } else {
 	                    alert('账号密码不正确');
 	                }

@@ -14,6 +14,13 @@
     void Page_Load(object sender, EventArgs e)
     {
         season = ConvertHelper.StrToInt(Request["season"]);
+        var cookieInfo=CookieHelper.GetCookie("nissan"+season);
+        if (string.IsNullOrEmpty(cookieInfo))
+        {
+            Response.Redirect("login.html?season=" + season);
+            return;
+        }
+
         if (!IsPostBack)
             FillData();
     }

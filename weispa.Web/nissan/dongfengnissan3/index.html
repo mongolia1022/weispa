@@ -1,0 +1,241 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+<title>东风日产</title>
+
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+
+<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+
+<link rel="stylesheet" href="lib/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.css">
+
+<!--JQ基础文件-->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+
+<!--IE6 PNG透明-->
+<!--[if lte IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a');
+    </script>
+<![endif]-->
+
+<!--TAB JS-->
+<script type="text/javascript"> 
+function setTab(m,n){ 
+var menu=document.getElementById("tab"+m).getElementsByTagName("li");  
+var div=document.getElementById("tablist"+m).getElementsByTagName("div"); 
+var showdiv=[]; 
+	for (i=0; j=div[i]; i++)
+	{  
+		if((" "+div[i].className+" ").indexOf(" tablist ")!=-1)
+		{  
+			showdiv.push(div[i]); 
+		} 
+	}  
+	for(i=0;i<menu.length;i++)
+	{  
+		menu[i].className=i==n?"now":"";  
+		showdiv[i].style.display=i==n?"block":"none"; 
+	}  
+}  
+</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="banner">
+    <img src="images/banner.jpg" width="100%" />
+    <div class="clear"></div>
+</div>
+
+<!--信息填写-->
+<div class="box_all">
+
+	<div class="capital">
+    
+    	<div class="capital_l iconfont">&#xe7ca; 姓　名：</div>
+    	<div class="capital_r"><input type="text" placeholder="请输入您的姓名"></div>
+        <div class="clear"></div>
+        
+        
+    	<div class="capital_l iconfont">&#xe7d3; 车　型：</div>
+    	<div class="capital_r">
+        	<div class="select-area">
+                <span class="select-value"></span>
+                <select>
+                   <option>请选择车型</option>
+                   <option>车型1</option>
+                   <option>车型2</option>
+                </select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        
+        
+    	<div class="capital_l iconfont">&#xe638; 电　话：</div>
+    	<div class="capital_r"><input type="text" placeholder="请输入您的电话"></div>
+        <div class="clear"></div>
+        
+        
+    	<div class="capital_l iconfont">&#xe78e; 经销商：</div>
+    	<div class="capital_r">
+       	  <div class="select-area" style="width:21%; margin-right:2%;">
+                <span class="select-value"></span>
+                <select>
+                   <option>省</option>
+                   <option>车型1</option>
+                   <option>车型2</option>
+                </select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+          <div class="select-area" style="width:21%; margin-right:2%;">
+                <span class="select-value"></span>
+                <select>
+                   <option>市</option>
+                   <option>车型1</option>
+                   <option>车型2</option>
+                </select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+          <div class="select-area" style="width:20%; ">
+                <span class="select-value"></span>
+                <select>
+                   <option>经销商</option>
+                   <option>车型1</option>
+                   <option>车型2</option>
+                </select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+      </div>
+        <div class="clear"></div>
+        
+        <div class="capital_btn"><a  href="">提交享受以下优惠</a></div>
+        
+    </div>
+    
+    <!--下拉选择select js-->
+	<script>
+	$(".select-area .select-value").each(function(){
+					if( $(this).next("select").find("option:selected").length != 0 ){
+						$(this).text( $(this).next("select").find("option:selected").text() );
+					}
+				});
+				$(".select-area select").change(function(){
+					var value = $(this).find("option:selected").text();
+					$(this).parent(".select-area").find(".select-value").text(value);
+				});
+	</script>
+    
+</div>
+
+<!--文字介绍-->
+<div class="box_pic">
+	<img src="images/special1.jpg" width="100%" />
+	<img src="images/special2.jpg" width="100%" />
+	<img src="images/special4.jpg" width="100%" />
+	<img src="images/special5.jpg" width="100%" />
+	<img src="images/special7.jpg" width="100%" />
+    <div class="clear"></div>
+</div>
+
+<div class="shop_msg">
+	<div class="shop_msg_t">
+    	<ul>
+        	<li id="msg_t1" class="iconfont now">&#xe62c;深圳地区</li>
+        </ul>
+        <script>
+        	$(function(){
+				$('.shop_msg_t ul li').click(function(){
+					$(this).addClass('now');
+					$(this).nextAll('li').removeClass('now');	
+					$(this).prevAll('li').removeClass('now');	
+				});	
+			});
+        </script>
+    </div>
+    <div id="msg1" class="shop_msg_b block">
+    	<div class="shop_msg_b_sl" id="tab1">
+        	<ul>
+            	<li onclick="setTab(1,0)" class="now">长沙</li>
+            	
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <div id="tablist1">
+        	<div class="tablist block">
+                <div class="shop_msg_b_in">
+                    长沙星沙   0731-82873888<br/>湖南省长沙市经济技术开发区中南汽车大世界金茂西路东头H13、H14栋
+                </div>
+                <div class="shop_msg_b_in">
+                    长沙兰天河西   0731-88799999<br/>湖南省长沙市岳麓区岳麓大道375号
+                </div>
+                <div class="shop_msg_b_in">
+                    长沙兰天含浦   0731-88799008<br/>湖南省长沙市岳麓区云栖路与含浦大道交汇路口（过猴子石大桥西行2公里）
+                </div>
+                <div class="shop_msg_b_in">
+                    长沙兰天城南   0731-85553399<br/>长沙市雨花区环保科技产业园黄谷路878号（汽车南站往南2公里）东风日产长沙兰天城南专营店
+                </div>
+                <div class="shop_msg_b_in">
+                    长沙兰天城西   0731-88965111<br/>湖南省长沙市岳麓大道西段河西汽车城M3栋
+                </div>
+                <div class="shop_msg_b_in">
+                    长沙华洋星城   0731-85981188<br/>湖南省长沙市雨花区万家丽中路一段370号
+                </div>
+                <div class="shop_msg_b_in">
+                    浏阳中拓诚丰集里   0731-83217888<br/>浏阳市西环路平水工业小区
+                </div>
+                <div class="shop_msg_b_in">
+                    宁乡中拓瑞宁   0731-87210000<br/>长沙市宁乡县白马桥乡正龙村（宁乡县二环南路汽车南站旁）
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <!--区域选择 JS-->
+    <script>
+		$(function(){
+			$('.shop_msg_t ul li').click(function(){
+				var cla=$(this).attr("id");
+				var j=cla.match(/\d+\b/);
+				$('#msg'+j).addClass('block');
+				$('#msg'+j).nextAll().removeClass('block');
+				$('#msg'+j).prevAll().removeClass('block');
+			});	
+		});
+	</script>
+</div>
+
+<!--文字介绍-->
+<div class="box_pic">
+	<img src="images/special8.jpg" width="100%" />
+    <div class="clear"></div>
+</div>
+
+
+<script src="lib/jquery-2.1.4.js"></script>
+<script src="lib/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="js/jquery-weui.js"></script>
+
+
+</body>
+</html>
