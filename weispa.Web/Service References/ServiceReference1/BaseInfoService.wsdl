@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BaseInfoService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://202.96.191.228:8080/MediaInterface/BaseInfoService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://202.96.191.228:8080/MediaInterface/BaseInfoService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBaseInfoService_GetProvince_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvince" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetProvince_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProvinceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetCity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCity" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetCity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetSeries_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeries" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetSeries_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSeriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetModel_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetModel" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetModel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetModelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetFriendlyLink_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendlyLink" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetFriendlyLink_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFriendlyLinkResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetLogNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLogNote" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetLogNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLogNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetSalesConsultant_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalesConsultant" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetSalesConsultant_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSalesConsultantResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetDealer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealer" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetDealer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetDealerImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerImage" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetDealerImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDealerImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetNews_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNews" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetNews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SendOnlineQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendOnlineQuestion" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SendOnlineQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendOnlineQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetOnlineAnswer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOnlineAnswer" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetOnlineAnswer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOnlineAnswerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SendLeads_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendLeads" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SendLeads_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendLeadsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetFeedBackLeads_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeedBackLeads" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetFeedBackLeads_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFeedBackLeadsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetCarsPrice_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCarsPrice" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetCarsPrice_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCarsPriceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetPushList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPushList" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetPushList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPushListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetAdvertisement_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvertisement" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetAdvertisement_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdvertisementResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetPromotion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotion" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_GetPromotion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPromotionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SendCallRecord_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendCallRecord" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SendCallRecord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendCallRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SendSalesClueIdentity_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendSalesClueIdentity" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SendSalesClueIdentity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendSalesClueIdentityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SyncSaleClues_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncSaleClues" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SyncSaleClues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncSaleCluesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SyncNews_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncNews" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SyncNews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SyncOnlineQAs_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncOnlineQAs" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SyncOnlineQAs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncOnlineQAsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SyncOperationLogs_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncOperationLogs" />
+  </wsdl:message>
+  <wsdl:message name="IBaseInfoService_SyncOperationLogs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncOperationLogsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBaseInfoService">
+    <wsdl:operation name="GetProvince">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetProvince" message="tns:IBaseInfoService_GetProvince_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetProvinceResponse" message="tns:IBaseInfoService_GetProvince_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetCity" message="tns:IBaseInfoService_GetCity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetCityResponse" message="tns:IBaseInfoService_GetCity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSeries">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetSeries" message="tns:IBaseInfoService_GetSeries_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetSeriesResponse" message="tns:IBaseInfoService_GetSeries_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetModel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetModel" message="tns:IBaseInfoService_GetModel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetModelResponse" message="tns:IBaseInfoService_GetModel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendlyLink">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetFriendlyLink" message="tns:IBaseInfoService_GetFriendlyLink_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetFriendlyLinkResponse" message="tns:IBaseInfoService_GetFriendlyLink_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogNote">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetLogNote" message="tns:IBaseInfoService_GetLogNote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetLogNoteResponse" message="tns:IBaseInfoService_GetLogNote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesConsultant">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetSalesConsultant" message="tns:IBaseInfoService_GetSalesConsultant_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetSalesConsultantResponse" message="tns:IBaseInfoService_GetSalesConsultant_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetDealer" message="tns:IBaseInfoService_GetDealer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetDealerResponse" message="tns:IBaseInfoService_GetDealer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetDealerImage" message="tns:IBaseInfoService_GetDealerImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetDealerImageResponse" message="tns:IBaseInfoService_GetDealerImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetNews" message="tns:IBaseInfoService_GetNews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetNewsResponse" message="tns:IBaseInfoService_GetNews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendOnlineQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/SendOnlineQuestion" message="tns:IBaseInfoService_SendOnlineQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/SendOnlineQuestionResponse" message="tns:IBaseInfoService_SendOnlineQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineAnswer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetOnlineAnswer" message="tns:IBaseInfoService_GetOnlineAnswer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetOnlineAnswerResponse" message="tns:IBaseInfoService_GetOnlineAnswer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendLeads">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/SendLeads" message="tns:IBaseInfoService_SendLeads_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/SendLeadsResponse" message="tns:IBaseInfoService_SendLeads_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFeedBackLeads">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetFeedBackLeads" message="tns:IBaseInfoService_GetFeedBackLeads_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetFeedBackLeadsResponse" message="tns:IBaseInfoService_GetFeedBackLeads_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarsPrice">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetCarsPrice" message="tns:IBaseInfoService_GetCarsPrice_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetCarsPriceResponse" message="tns:IBaseInfoService_GetCarsPrice_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPushList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetPushList" message="tns:IBaseInfoService_GetPushList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetPushListResponse" message="tns:IBaseInfoService_GetPushList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvertisement">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetAdvertisement" message="tns:IBaseInfoService_GetAdvertisement_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetAdvertisementResponse" message="tns:IBaseInfoService_GetAdvertisement_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPromotion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/GetPromotion" message="tns:IBaseInfoService_GetPromotion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/GetPromotionResponse" message="tns:IBaseInfoService_GetPromotion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendCallRecord">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/SendCallRecord" message="tns:IBaseInfoService_SendCallRecord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/SendCallRecordResponse" message="tns:IBaseInfoService_SendCallRecord_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSalesClueIdentity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/SendSalesClueIdentity" message="tns:IBaseInfoService_SendSalesClueIdentity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/SendSalesClueIdentityResponse" message="tns:IBaseInfoService_SendSalesClueIdentity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncSaleClues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/SyncSaleClues" message="tns:IBaseInfoService_SyncSaleClues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/SyncSaleCluesResponse" message="tns:IBaseInfoService_SyncSaleClues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncNews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/SyncNews" message="tns:IBaseInfoService_SyncNews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/SyncNewsResponse" message="tns:IBaseInfoService_SyncNews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncOnlineQAs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/SyncOnlineQAs" message="tns:IBaseInfoService_SyncOnlineQAs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/SyncOnlineQAsResponse" message="tns:IBaseInfoService_SyncOnlineQAs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncOperationLogs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBaseInfoService/SyncOperationLogs" message="tns:IBaseInfoService_SyncOperationLogs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBaseInfoService/SyncOperationLogsResponse" message="tns:IBaseInfoService_SyncOperationLogs_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IBaseInfoService" type="tns:IBaseInfoService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProvince">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetProvince" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCity">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSeries">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetSeries" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetModel">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetModel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFriendlyLink">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetFriendlyLink" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogNote">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetLogNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSalesConsultant">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetSalesConsultant" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealer">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetDealer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDealerImage">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetDealerImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendOnlineQuestion">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/SendOnlineQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOnlineAnswer">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetOnlineAnswer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendLeads">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/SendLeads" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFeedBackLeads">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetFeedBackLeads" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarsPrice">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetCarsPrice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPushList">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetPushList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdvertisement">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetAdvertisement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPromotion">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/GetPromotion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendCallRecord">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/SendCallRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSalesClueIdentity">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/SendSalesClueIdentity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncSaleClues">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/SyncSaleClues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncNews">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/SyncNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncOnlineQAs">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/SyncOnlineQAs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncOperationLogs">
+      <soap:operation soapAction="http://tempuri.org/IBaseInfoService/SyncOperationLogs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BaseInfoService">
+    <wsdl:port name="BasicHttpBinding_IBaseInfoService" binding="tns:BasicHttpBinding_IBaseInfoService">
+      <soap:address location="http://202.96.191.228:8080/MediaInterface/BaseInfoService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
