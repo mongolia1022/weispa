@@ -75,10 +75,10 @@ var showdiv=[];
                 <span class="select-value"></span>
                 <select id="field_car">
                     <option value="">请选择车型</option>
-                    <option value="全新奇骏">全新奇骏</option>
-                    <option value="新楼兰">新楼兰</option>
-                    <option value="全新逍客">全新逍客</option>
-                    <option value="全新劲客">全新劲客</option>
+                    <option value="全新奇骏_205">全新奇骏</option>
+                    <option value="新楼兰_197">新楼兰</option>
+                    <option value="全新逍客_199">全新逍客</option>
+                    <option value="全新劲客_208">全新劲客</option>
                 </select>
                 <div class="select_dot iconfont">&#xe615;</div>
             </div>
@@ -114,22 +114,24 @@ var showdiv=[];
         </div>
         <div class="clear"></div>
         
-        <div class="capital_btn"><a  href="">提交享受以下优惠</a></div>
+        <div class="capital_btn"><a href="javascript:void(0)" id="submitBtn">提交享受以下优惠</a></div>
         
     </div>
     
     <!--下拉选择select js-->
-	<script>
-	$(".select-area .select-value").each(function(){
-					if( $(this).next("select").find("option:selected").length != 0 ){
-						$(this).text( $(this).next("select").find("option:selected").text() );
-					}
-				});
-				$(".select-area select").change(function(){
-					var value = $(this).find("option:selected").text();
-					$(this).parent(".select-area").find(".select-value").text(value);
-				});
-	</script>
+    <script>
+        $(function () {
+            $(".select-area .select-value").each(function () {
+                if ($(this).next("select").find("option:selected").length != 0) {
+                    $(this).text($(this).next("select").find("option:selected").text());
+                }
+            });
+            $(".select-area select").change(function () {
+                var value = $(this).find("option:selected").text();
+                $(this).parent(".select-area").find(".select-value").text(value);
+            });
+        });
+    </script>
     
 </div>
 
@@ -146,7 +148,7 @@ var showdiv=[];
 <div class="shop_msg">
 	<div class="shop_msg_t">
     	<ul>
-        	<li id="msg_t1" class="iconfont now">&#xe62c;深圳地区</li>
+        	<li id="msg_t1" class="iconfont now">&#xe62c;湖南地区</li>
         </ul>
         <script>
         	$(function(){
@@ -236,17 +238,17 @@ var showdiv=[];
             required: true,
             url: [
                 {
-                    'v': '湖南省', 'n': '湖南省', 's': [
+                    'v': '湖南省_21', 'n': '湖南省', 's': [
                         {
-                            'v': '长沙市', 'n': '长沙市', 's': [
-                                { 'v': '长沙星沙', n: '长沙星沙(湖南省长沙市经济技术开发区中南汽车大世界金茂西路东头H13、H14栋)' },
-                                { 'v': '长沙兰天河西', n: '长沙兰天河西(湖南省长沙市岳麓区岳麓大道375号)' },
-                                { 'v': '长沙兰天含浦', n: '长沙兰天含浦(湖南省长沙市岳麓区云栖路与含浦大道交汇路口（过猴子石大桥西行2公里）)' },
-                                { 'v': '长沙兰天城南', n: '长沙兰天城南(长沙市雨花区环保科技产业园黄谷路878号（汽车南站往南2公里）东风日产长沙兰天城南专营店)' },
-                                { 'v': '长沙兰天城西', n: '长沙兰天城西(湖南省长沙市岳麓大道西段河西汽车城M3栋)' },
-                                { 'v': '长沙华洋星城', n: '长沙华洋星城(湖南省长沙市雨花区万家丽中路一段370号)' },
-                                { 'v': '浏阳中拓诚丰集里', n: '浏阳中拓诚丰集里(浏阳市西环路平水工业小区)' },
-                                { 'v': '宁乡中拓瑞宁', n: '宁乡中拓瑞宁(长沙市宁乡县白马桥乡正龙村（宁乡县二环南路汽车南站旁）)' },
+                            'v': '长沙市_263_A2018-1244-4650-2673-113717', 'n': '长沙市', 's': [
+                                { 'v': '长沙星沙_F2501', n: '长沙星沙(湖南省长沙市经济技术开发区中南汽车大世界金茂西路东头H13、H14栋)' },
+                                { 'v': '长沙兰天河西_F2506', n: '长沙兰天河西(湖南省长沙市岳麓区岳麓大道375号)' },
+                                { 'v': '长沙兰天含浦_F2510', n: '长沙兰天含浦(湖南省长沙市岳麓区云栖路与含浦大道交汇路口（过猴子石大桥西行2公里）)' },
+                                { 'v': '长沙兰天城南_F2509', n: '长沙兰天城南(长沙市雨花区环保科技产业园黄谷路878号（汽车南站往南2公里）东风日产长沙兰天城南专营店)' },
+                                { 'v': '长沙兰天城西_F2505', n: '长沙兰天城西(湖南省长沙市岳麓大道西段河西汽车城M3栋)' },
+                                { 'v': '长沙华洋星城_F2502', n: '长沙华洋星城(湖南省长沙市雨花区万家丽中路一段370号)' },
+                                { 'v': '浏阳中拓诚丰集里_F2508', n: '浏阳中拓诚丰集里(浏阳市西环路平水工业小区)' },
+                                { 'v': '宁乡中拓瑞宁_F2507', n: '宁乡中拓瑞宁(长沙市宁乡县白马桥乡正龙村（宁乡县二环南路汽车南站旁）)' },
                             ]
                         },
                         {

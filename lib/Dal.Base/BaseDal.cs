@@ -313,7 +313,7 @@ namespace com.ccfw.Dal.Base
             strSql.Append(strParameter + ";");
             if (t.IsAutoId)
             {
-                //strSql.Append("select SCOPE_IDENTITY()");
+                strSql.Append("select last_insert_id()");
             }
             Database db = DatabaseFactory.CreateDatabase(connName);
             using (DbCommand cmd = db.GetSqlStringCommand(strSql.ToString()))

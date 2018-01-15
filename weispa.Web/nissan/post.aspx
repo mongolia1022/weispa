@@ -1,8 +1,11 @@
 ﻿<%@ Page Language="C#" %>
+<%@ Import Namespace="System.IO" %>
+<%@ Import Namespace="System.Net" %>
 <%@ Import Namespace="System.Web.Script.Serialization" %>
 <%@ Import Namespace="com.ccfw.Dal.Base" %>
 <%@ Import Namespace="com.ccfw.Model.Base" %>
 <%@ Import Namespace="com.ccfw.Utility" %>
+<%@ Import Namespace="com.weispa.Web.ServiceReference1" %>
 <%@ Import Namespace="com.weispa.Web.Util" %>
 <%@ Import Namespace="Newtonsoft.Json" %>
 <script language="C#" runat="server">
@@ -13,14 +16,13 @@
         var dal = new BaseDAL<NissanCustom>();
         var model = JsonConvert.DeserializeObject<NissanCustom>(data);
         model.createOn=DateTime.Now;
-        
-        //var oldCount = dal.GetCount(string.Format("phone='{0}'",model.phone));
-        //if (oldCount > 0)
-        //{
-        //    Response.Write(JsonConvert.SerializeObject(new {success=false,info="该手机号已经参与了"}));
-        //    Response.End();
-        //    return;
-        //}
+
+        var oldCount = dal.GetCount(string.Format("phone='{0}'", model.phone));
+        if (oldCount > 0)
+        {
+            returnJson(false, "该手机号已经参与了");
+            return;
+        }
 
         if (string.IsNullOrEmpty(model.name))
         {
@@ -57,11 +59,22 @@
             returnJson(false, "请选择店");
             return;
         }
-        
-        dal.Add(model);
-        
-        RequestArgs arg=new RequestArgs();
 
+        var dbmodel = new NissanCustom()
+        {
+            name = model.name,
+            car = model.car.Split('_')[0],
+            phone = model.phone,
+            province = model.province.Split('_')[0],
+            city = model.city.Split('_')[0],
+            store = model.store.Split('_')[0],
+            createOn = model.createOn,
+            season = model.season
+        };
+        
+        model.id=dal.Add(dbmodel);
+        
+        apiService(model);
         
         Response.Write(JsonConvert.SerializeObject(new { success = 0, info = "报名成功" }));
         Response.End();
@@ -102,24 +115,51 @@
         public int season { get; set; }
     }
 
-    private void apiService()
+    private void apiService(NissanCustom model)
     {
-        RequestArgs mArgs = new RequestArgs
-        {
-            Encode = "utf-8",
-            Method = "POST",
-            TimeOut = 3000,
-            Url = "http://202.96.191.228:8080/MediaInterface/BaseInfoService.svc",
-            postData = JsonConvert.SerializeObject(new {})
-        };
+        LogHelper.AddLog("apiservice开始");
+        var citydata = model.city.Split('_');
+        if (citydata.Length < 3)
+            return;
+        
+        if(!model.name.Contains("测试"))
+            return;
+
         try
         {
-            var returnData = CWebRequest.GetPost(mArgs);
-            LogHelper.AddLog(returnData);
+            string re = new BaseInfoServiceClient().SyncSaleClues(JsonConvert.SerializeObject(new
+            {
+                AuthenticatdKey = "A0000-000-000-00-00000", //测试
+                RequestObject = new ArrayList()
+                {
+                    {
+                        new
+                        {
+                            MEDIA_LEAD_ID = model.id,
+                            FK_DEALER_ID = model.store.Split('_')[1], //专营店编号
+                            CUSTOMER_NAME = model.name,
+                            MOBILE = model.phone,
+                            PROVINCE = model.province.Split('_')[1], //省编号
+                            CITY = model.city.Split('_')[1], //市编号
+                            SERIES = model.car.Split('_')[1], //车型编号,
+                            MODEL = "",
+                            ORDER_TIME = model.createOn.ToString("yyyy-MM-dd HH:mm:ss"), //报名时间
+                            COMMENTS = "", //商家备注
+                            OPERATE_TYPE = "0", //新增
+                            OPERATE_TIME = model.createOn.ToString("yyyy-MM-dd HH:mm:ss"),
+                            STATUS = "0",
+                            SMART_CODE = "A0000-000-000-00-00000" //model.city.Split('_')[2]//城市对应smartcode值
+                        }
+                    }
+                }
+            }));
+            LogHelper.AddLog(re);
         }
         catch (Exception ex)
         {
             LogHelper.AddLog(ex.ToString());
+            LogHelper.AddLog(ex.StackTrace);
+            throw;
         }
     }
 </script>
