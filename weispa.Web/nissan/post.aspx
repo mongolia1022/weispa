@@ -118,24 +118,25 @@
     private void apiService(NissanCustom model)
     {
         LogHelper.AddLog("apiservice开始");
+        LogHelper.AddLog(JsonConvert.SerializeObject(model));
         var citydata = model.city.Split('_');
         if (citydata.Length < 3)
             return;
         
-        if(!model.name.Contains("测试"))
-            return;
+        //if(!model.name.Contains("测试"))
+        //    return;
 
         try
         {
-            string re = new BaseInfoServiceClient().SyncSaleClues(JsonConvert.SerializeObject(new
+            string param = JsonConvert.SerializeObject(new
             {
-                AuthenticatdKey = "A0000-000-000-00-00000", //测试
+                AuthenticatdKey = model.city.Split('_')[2],//"A0000-000-000-00-00000"测试
                 RequestObject = new ArrayList()
                 {
                     {
                         new
                         {
-                            MEDIA_LEAD_ID = model.id,
+                            MEDIA_LEAD_ID = model.id.ToString(),
                             FK_DEALER_ID = model.store.Split('_')[1], //专营店编号
                             CUSTOMER_NAME = model.name,
                             MOBILE = model.phone,
@@ -148,11 +149,13 @@
                             OPERATE_TYPE = "0", //新增
                             OPERATE_TIME = model.createOn.ToString("yyyy-MM-dd HH:mm:ss"),
                             STATUS = "0",
-                            SMART_CODE = "A0000-000-000-00-00000" //model.city.Split('_')[2]//城市对应smartcode值
+                            SMART_CODE =  model.city.Split('_')[2]//城市对应smartcode值 "A0000-000-000-00-00000"测试
                         }
                     }
                 }
-            }));
+            });
+            string re = new BaseInfoServiceClient().SyncSaleClues(param);
+            LogHelper.AddLog(param);
             LogHelper.AddLog(re);
         }
         catch (Exception ex)
