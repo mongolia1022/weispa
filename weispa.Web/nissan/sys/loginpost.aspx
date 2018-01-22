@@ -26,6 +26,10 @@
         {
             right = data.name == "admin3" && data.pw == "pwd3";
         }
+        else if (data.season == 4)
+        {
+            right = data.name == "admin4" && data.pw == "pwd4";
+        }
 
         if(right)
             CookieHelper.SetCookie("nissan" + data.season, "1");

@@ -14,6 +14,10 @@ var navs = [{
 		"title": "活动3",
 	"icon": "&#xe641;",
 	"href": "admin.aspx?season=3"
-}
+	}, {
+	    "title": "活动4",
+	    "icon": "&#xe641;",
+	    "href": "admin.aspx?season=4"
+	}
 	]
 }];

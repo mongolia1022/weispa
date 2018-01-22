@@ -1,0 +1,223 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+<title>东风日产惠州</title>
+
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+
+<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="css/animate.min.css" />
+
+<link rel="stylesheet" href="lib/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.css">
+
+<!--JQ基础文件-->
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+
+<!--IE6 PNG透明-->
+<!--[if lte IE 6]>
+<script src="js/DD_belatedPNG_0.0.8a.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('div, ul, img, li, input , a');
+    </script>
+<![endif]-->
+
+<!--TAB JS-->
+<script type="text/javascript"> 
+    function setTab(m,n){ 
+        var menu=document.getElementById("tab"+m).getElementsByTagName("li");  
+        var div=document.getElementById("tablist"+m).getElementsByTagName("div"); 
+        var showdiv=[]; 
+        for (i=0; j=div[i]; i++)
+        {  
+            if((" "+div[i].className+" ").indexOf(" tablist ")!=-1)
+            {  
+                showdiv.push(div[i]); 
+            } 
+        }  
+        for(i=0;i<menu.length;i++)
+        {  
+            menu[i].className=i==n?"now":"";  
+            showdiv[i].style.display=i==n?"block":"none"; 
+        }  
+    }  
+</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+
+
+<!--信息填写-->
+<div class="box_all">
+
+	<div class="capital">
+    
+    	<div class="capital_l iconfont">&#xe7ca; 姓　名：</div>
+    	<div class="capital_r"><input type="text" placeholder="请输入您的姓名" id="field_name"></div>
+        <div class="clear"></div>
+        
+        
+    	<div class="capital_l iconfont">&#xe7d3; 车　型：</div>
+    	<div class="capital_r">
+        	<div class="select-area">
+                <span class="select-value"></span>
+                <select id="field_car">
+                    <option value="">请选择车型</option>
+                    <option value="新轩逸_34">新轩逸</option>
+                    <option value="轩逸经典_26">轩逸经典</option>
+                    <option value="全新天籁_203">全新天籁</option>
+                    <option value="新楼兰_197">新楼兰</option>
+                    <option value="新生代_201">新生代</option>
+                    <option value="TIIDA_29">TIIDA</option>
+                    <option value="劲客_208">劲客</option>
+                    <option value="蓝鸟_194">蓝鸟</option>
+                    <option value="新逍客_199">新逍客</option>
+                    <option value="全新奇骏_205">全新奇骏</option>
+                    <option value="西玛_200">西玛</option>
+                </select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        
+        
+    	<div class="capital_l iconfont">&#xe638; 电　话：</div>
+    	<div class="capital_r"><input type="text" placeholder="请输入您的电话" id="field_phone"></div>
+        <div class="clear"></div>
+        
+        
+    	<div class="capital_l iconfont">&#xe78e; 经销商：</div>
+    	<div class="capital_r" id="selectbox">
+       	  <div class="select-area" style="width:21%; margin-right:2%;">
+                <span class="select-value"></span>
+               <select class="se_province" id="field_province"></select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+          <div class="select-area" style="width:21%; margin-right:2%;">
+                <span class="select-value"></span>
+              <select class="se_city" id="field_city"></select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+          <div class="select-area" style="width:20%; ">
+                <span class="select-value"></span>
+              <select class="se_store" id="field_store"></select>
+                <div class="select_dot iconfont">&#xe615;</div>
+            </div>
+      </div>
+        <div class="clear"></div>
+        
+        <div class="capital_btn"><a  href="javascript:void(0)" id="submitBtn">提交享受以下优惠</a></div>
+        
+    </div>
+    
+    <!--下拉选择select js-->
+    <script>
+    $(function () {
+        $(".select-area .select-value").each(function () {
+            if ($(this).next("select").find("option:selected").length != 0) {
+                $(this).text($(this).next("select").find("option:selected").text());
+            }
+        });
+        $(".select-area select").change(function () {
+            var value = $(this).find("option:selected").text();
+            $(this).parent(".select-area").find(".select-value").text(value);
+        });
+    });
+    </script>
+    
+</div>
+
+<!--文字介绍-->
+
+
+
+<!--文字介绍-->
+
+
+
+<script src="lib/jquery-2.1.4.js"></script>
+<script src="lib/fastclick.js"></script>
+<script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+</script>
+<script src="js/jquery-weui.js"></script>
+    <script src="../js/jquery.cxselect.min.js"></script>
+
+<script>
+    $('#selectbox').cxSelect({
+        selects: ['se_province', 'se_city', 'se_store'],
+        required: true,
+        url: [
+            {
+                'v': '广东省_24', 'n': '广东省', 's': [
+                    {
+                        'v': '惠州市_302_A2018-1244-4645-2555-113947', 'n': '惠州市', 's': [
+                            { 'v': '惠州中安_G2930', n: '惠州中安(惠州市惠东县城银基大道粤惠汽车大市场1号)' },
+                            { 'v': '惠州俊通_G2932', n: '惠州俊通(广东省惠州市金龙大道江北51号小区（江北车管所往北3公里）)' },
+                            { 'v': '惠州天驿_G2933', n: '惠州天驿(惠州市博罗县罗阳镇广惠高速入口前1000米处)' },
+                            { 'v': '惠州南菱君达_G2935', n: '惠州南菱君达(惠州市惠城区三栋镇惠南汽车城惠州君达东风日产4S店)' },
+                            { 'v': '惠州永惠_H2929', n: '惠州永惠(广东省惠州市惠城区大湖溪广汕公路49号（蓝波湾对面）)' },
+                            { 'v': '惠州安捷_H2952', n: '惠州安捷(惠州市大亚湾西区上杨龙海二路32号)' },
+                            { 'v': '惠州天马_H2946', n: '惠州天马(广东省惠州市三环路与口岸路交接处（实验中学旁）)' },
+                        ]
+                    }
+                ]
+            }
+        ]
+    });
+
+    var can = true;
+    $(function() {
+        $('#submitBtn').click(function () {
+            if (!can) {
+                alert('请不要重复提交');
+                return;
+            }
+
+            var req = {
+                name: $('#field_name').val(),
+                car: $('#field_car').val(),
+                phone: $('#field_phone').val(),
+                province: $('#field_province').val(),
+                city: $('#field_city').val(),
+                store: $('#field_store').val(),
+                season:4
+        };
+            can = false;
+            $.ajax({
+                url: '/nissan/post.aspx?r=' + Math.random(),
+                data: {
+                    data: JSON.stringify(req)
+                },
+                dataType: 'json',
+                type: "post",
+                success: function (d) {
+                    if (d.success==0) {
+                        can = false;
+                        alert("提交成功");
+                    } else {
+                        can = true;
+                        alert(d.info);
+                    }
+                },
+                error: function (e, d) {
+                    can = true;
+                    alert("提交失败");
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
