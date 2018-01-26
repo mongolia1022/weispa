@@ -361,6 +361,16 @@ var showdiv=[];
                     }
                 });
             });
+
+            $.ajax({
+                url: '/nissan/ll.aspx?season=3&r=' + Math.random(),
+                type: "post",
+                success: function (d) {
+
+                },
+                error: function (e, d) {
+                }
+            });
         });
     </script>
 
