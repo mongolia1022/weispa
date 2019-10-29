@@ -1,0 +1,109 @@
+﻿@charset "utf-8";
+
+/*首页*/
+.pic{width: 100%;}
+.pic img{width: 100%; float: left;}
+
+.idx_finger{width:15vh; height:19vh; position:fixed; top:50%; left:50%; margin-top:-9.5vh; margin-left:-7.5vh; animation-iteration-count: 40000;}
+.idx_finger img{width:100%; pointer-events: none;}
+
+.entrance_btn{width: 80vw; position: fixed; bottom: 5vw; left: 50%; margin-left: -40vw; animation-iteration-count: 40000; display:none;}
+.entrance_btn img{width: 100%;}
+
+
+/*选相框*/
+.choose_bg{background:url(../images/bg_choose.jpg) center bottom no-repeat #000074; background-size:100% 100%;}
+.choose_moon{width:100%; position:fixed; bottom:0; left:0; z-index:1;}
+.choose_title1{width:100%; position:fixed; top:0; left:0%; z-index:2;}
+.choose_title2{width:100%; position:fixed; top:0%; left:0%; z-index:3;}
+.choose_swiper{width:100%; position:fixed; top:22vh; left:0; z-index:4;}
+.choose_btn{width:26vh; position:fixed; bottom:6.2vh; left:50%; margin-left:-13vh; z-index:5;}
+
+
+/*照片合成*/
+.combine{width:100%; height:100%; background:url(../images/combine_bg1.jpg) center bottom no-repeat #000074; background-size:100% 100%; position:relative;}
+.combine_photo{width:39.4vh; background:#fff; border:3px solid #fcda00; border-radius:2vw; overflow:hidden; position:fixed; top:7vh; left:50%; margin-left:-19.7vh; display:none;}
+.combine_photo img{width:39.4vh; height:70vh; float:left;}
+.combine_photo img.frame{position:absolute; top:0; left:0; float:none;}
+.combine_btn{width:100%; position:fixed; left:0; bottom:7vh; text-align:center; display:none;}
+.combine_btn img{height:8.3vh; margin:0 0.5vh; display:inline-block;}
+
+.combine_finished{width:100%; height:100%; background:url(../images/combine_bg2.jpg) center bottom no-repeat #000074; background-size:100% 100%; position:fixed; left:0; bottom:0; display:none;}
+.combine_finished_btn{width:100%; position:absolute; left:0; bottom:13.33vh; text-align:center;}
+.combine_finished_btn img{height:8.3vh; margin:0 auto; display:inline-block;}
+.combine_av{width:46vh; position:absolute; bottom:5vh; left:50%; margin-left:-23vh}
+.combine_av img{width:100%;}
+.combine_finger{width:15vh; position:absolute; top:50%; right:3vh; margin-top:-7.5vh; animation-iteration-count: 40000; pointer-events: none;}
+.combine_finger img{width:100%; pointer-events: none;}
+
+
+/*截图上传页面*/
+.clipbg{
+	position: fixed;
+	background: black;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	left: 0;
+}
+.loading{
+	position: absolute;
+	top: 40%;
+	width: 38%;
+	left: 31%;
+	height: 1.6rem;
+	line-height: 1.6rem;
+	z-index: 99999;
+	text-align: center;
+	color: #ffffff;
+	border-radius:0.2rem ;
+	background: #9f9f9f;
+}
+.clipbg #clipArea{
+	width: 100%;
+	height: 80%;
+	margin: auto;
+
+}
+.clipbg .footer{
+	width: 90%;
+	position: fixed;
+	left: 5%;
+	bottom: 0px;
+	text-align: center;
+}
+.clipbg dl{
+	background: #ffffff;
+	border-radius: 0.4rem;
+	overflow: hidden;
+	margin-bottom: 0.6rem;
+}
+.clipbg dd{
+	position: relative;
+	height: 2.25rem;
+	line-height: 2.25rem;
+	border-bottom:1px solid #999999 ;
+}
+.clipbg .back{
+	height: 2.25rem;
+	line-height:2.25rem;
+	border-radius: 0.4rem;
+	margin-bottom: 0.4rem;
+	background: #ffffff;
+}
+.clipbg dd input{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 11;
+	filter:alpha(opacity=0);  
+  -moz-opacity:0;  
+  -khtml-opacity: 0;  
+  opacity: 0; 
+}
+
+/*背景音乐*/
+#music_btn{width:50px; height:50px; position:fixed; top:20px; right:20px; background:url(../images/music_btn.png) center top; z-index:99999999999; background-size:100%;}
