@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function (){
     audioAutoPlay();
     
 });
-
+$(function(){
 $('body').find("audio").attr('id', 'bg-music')
 var myVid = document.getElementById("bg-music");
 $('#music_btn').click(function() {
@@ -86,6 +86,7 @@ myVid.muted = true;
 $('#music_btn').css('background-position','center bottom');
 }
 })
+});
 </script> 
 
 <!--合成前-->
@@ -157,6 +158,7 @@ $(function(){
 <script type="text/javascript" src="js/camera.js/iscroll-zoom-min.js" ></script>
 <script type="text/javascript" src="js/camera.js/PhotoClip.js" ></script>
 <script>
+$(function(){
 	$(".upload_pic").click(function(){
 		$(".clipbg").fadeIn();
 	})
@@ -185,6 +187,7 @@ $(function(){
 		$(".back").click(function(){
 			$(".clipbg").fadeOut()
 		})
+		});
 </script>
 
 
@@ -395,7 +398,7 @@ function GetQueryString(name)
 $(function(){
     var frameName=GetQueryString('frame');
     console.log("images/"+frameName+".jpg");
-    $('#frameImg').attr('src',"images/"+frameName+".jpg");
+    $('#frameImg').attr('src',"images/"+frameName+".png");
 
     $(function(){
         $.ajax({
