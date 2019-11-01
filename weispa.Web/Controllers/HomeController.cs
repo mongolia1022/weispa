@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using com.ccfw.Dal.Base;
+using com.ccfw.Utility;
 using com.weispa.Web.Models;
 using com.weispa.Web.Util;
 using com.weispa.Web.Utils;
@@ -67,6 +68,29 @@ namespace com.weispa.Web.Controllers
             new BaseDAL<UseCount>().Add(openCount);
 
             return "{status:1}";
+        }
+
+        public string stats(StatsReq req)
+        {
+            try
+            {
+                DateTime start = Convert.ToDateTime(req.start);
+                DateTime end = Convert.ToDateTime(req.end).AddDays(1);
+                int opencount =
+                    new BaseDAL<OpenCount>().GetCount(
+                        string.Format("CreateOn>'{0:yyyy-MM-d}' and CreateOn<='{1:yyyy-MM-d}'", start, end));
+                int usecount =
+                    new BaseDAL<UseCount>().GetCount(string.Format("CreateOn>'{0:yyyy-MM-d}' and CreateOn<='{1:yyyy-MM-d}'",
+                        start, end));
+                
+                return "{"+string.Format("\"opencount\":{0},\"usecount\":{1}", opencount, usecount)+"}";
+            }
+            catch (Exception e)
+            {
+                LogHelper.AddLog(e.ToString());
+            }
+
+            return "error";
         }
     }
 }

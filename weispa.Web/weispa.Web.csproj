@@ -141,6 +141,7 @@
     </Compile>
     <Compile Include="Models\enum.cs" />
     <Compile Include="Models\MemberInfo.cs" />
+    <Compile Include="Models\StatsReq.cs" />
     <Compile Include="Models\UseCount.cs" />
     <Compile Include="Models\OpenCount.cs" />
     <Compile Include="Models\Order.cs" />
@@ -414,6 +415,7 @@
     <Content Include="douinh5\music\ai2.mp3" />
     <Content Include="douinh5\music\bgm.mp3" />
     <Content Include="douinh5\music\bgm2.mp3" />
+    <Content Include="douinh5\Stats.aspx" />
     <Content Include="Global.asax" />
     <Content Include="iconfont\demo.css" />
     <Content Include="iconfont\demo.html" />
