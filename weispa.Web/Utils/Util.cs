@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace com.weispa.Web.Utils
 {
@@ -35,5 +36,22 @@ namespace com.weispa.Web.Utils
                 return response.Content.ReadAsStringAsync().Result;
             }
         }
+        
+        public static string HttpPost(string url,object content,Dictionary<string, string> headers = null)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                HttpContent data = new StringContent(JsonConvert.SerializeObject(content));
+                client.DefaultRequestHeaders.Add("ContentType",  "application/json");
+                if (headers != null)
+                {
+                    foreach (var header in headers)
+                        client.DefaultRequestHeaders.Add(header.Key, header.Value);
+                }
+                HttpResponseMessage response = client.PostAsync(url,data).Result;
+                return response.Content.ReadAsStringAsync().Result;
+            }
+        }
+
     }
 }

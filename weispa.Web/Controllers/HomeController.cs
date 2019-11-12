@@ -15,7 +15,7 @@ namespace com.weispa.Web.Controllers
 {
     public class HomeController : BaseController
     {
-        //private static string customerBaseUrl = "http://lizhanpeng3.oicp.net:8855/jd_web_test/api/ERP_Connecter";
+//        private static string customerBaseUrl = "http://lizhanpeng3.oicp.net:8855/jd_web_test/api/ERP_Connecter";
         private static string customerBaseUrl = "http://198.198.195.93/jd_web_test/api/ERP_Connecter";
 
         /// <summary>
